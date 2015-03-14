@@ -26,6 +26,18 @@ var ScreenHome = (function(){
 				delete localStorage.wizard;
 			}
 		})
+
+		document.getElementById('fake-dev-data').addEventListener('click', function(){
+			navigator.notification.alert(
+			    'Close and open the app to have the start dev data',
+			    function(){},
+			    'Dev data',
+			    'Ok'
+			);
+			if(localStorage.dev){
+				delete localStorage.dev;
+			}
+		})
 	}
 	fakePractice();
 
