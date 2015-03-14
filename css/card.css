@@ -1,0 +1,147 @@
+.wrapper-card {
+	/*display: table;*/
+	width: 100%;
+	height: 100%;
+	padding: 1.6rem;
+	box-sizing: border-box;
+}
+
+.wrapper-card-modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 100;
+	padding: 1.6rem;
+	background: rgba(0,0,0,0.2);
+	opacity: 1;
+	display: block;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+.wrapper-card-modal[hidden] {
+	display: block;
+	pointer-events: none;
+	opacity: 0;
+}
+
+.wrapper-card-modal[hidden] .card {
+	-webkit-transform: translate3d(0, -200%, 0);
+	transform: translate3d(0, -200%, 0);
+}
+
+.card {
+	position: relative;
+	height: 27rem;
+	margin: 0;
+	text-align: center;
+	font-size: 1.5rem;
+	border-radius: 0.5rem;
+	color: #555;
+	padding: 0 1.6rem;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-transition: transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.card h1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5rem;
+	width: 100%;
+	line-height: 5rem;
+	font-size: 1.5rem;
+}
+
+.card p {
+	font-size: 4rem;
+	padding: 7rem 2rem 0;
+	margin-top: -4.5rem; /* compensa el padding top y así tenemos margen abajo */
+	line-height: 1.2em;
+	box-sizing: border-box;
+}
+
+.card [check="true"] {
+	background: #6FCE7E;
+}
+
+.card [check="false"] {
+	background: #EA694E;
+}
+
+
+.card [check] p {
+	padding: 0;
+	margin-top: 0;
+}
+
+.card [check] p span {
+	font-weight: bold;
+	color: #fff;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+	/*display: table-cell;*/
+	width: 100%;
+	vertical-align: middle;
+	-webkit-perspective: 1000;
+	perspective: 1000;
+}
+
+	/* flip the pane when hovered */
+	.flip .flip-container .flipper,
+	.flip-container.flip .flipper {
+		-webkit-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+
+	.flip .flip-container .front,
+	.flip-container.flip .front  {
+		opacity: 0;
+		-webkit-transition: 0s 0.2s;
+		transition: 0s 0.2s;
+	}
+
+/* flip speed goes here */
+.flipper {
+	-webkit-transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	border-radius: 0.5rem;
+
+	background: #fff;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	-webkit-transition: 0s 0.2s;
+	transition: 0s 0.2s;
+}
+
+/* back, initially hidden pane */
+.back {
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}

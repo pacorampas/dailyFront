@@ -1,0 +1,63 @@
+.icon, i {
+	width: 3.2rem;
+	height: 3.2rem;
+	margin: 0.8rem;
+	display: inline-block;
+	font-family: 'icon';
+	font-size: 2rem;
+	line-height: 3.2rem;
+	text-align: center;
+}
+
+.icon + .icon,
+i + i {
+	margin-right: 0;
+}
+
+.icon.text, i.text {
+	width: auto;
+}
+
+.icon.text::before, i.text::before {
+	content: attr(text);
+}
+
+.icon.menu::before, i.text::before {
+	content: '\f0c9';
+}
+
+.icon.heart::before, i.heart::before {
+	content: '\f004';
+}
+
+.icon.search::before, i.search::before {
+	content: '\f002';
+}
+
+.icon.arrow-left::before, i.arrow-left::before {
+	content: '\f060';
+}
+
+.icon.arrow-right::before, i.arrow-right::before {
+	content: '\f061';
+}
+
+.icon.gear::before, i.gear::before {
+	content: '\f013';
+}
+
+.icon.power-off::before, i.power-off::before {
+	content: '\f011';
+}
+
+.icon.left,
+i.left,
+.header h1.left {
+	float: left;
+}
+
+.icon.right,
+i.right,
+.header h1.right {
+	float: right;
+}

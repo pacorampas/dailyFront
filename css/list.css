@@ -1,0 +1,53 @@
+ul.list {
+	list-style: outside none none;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	background: #fff;
+}
+
+ul.list li {
+	position: relative;
+	margin: 0 auto;
+	padding: 0 3rem;
+	font-size: 2rem;
+	height: 6rem;
+	line-height: 6rem;
+	outline: none !important;
+	background: #fff;
+	box-sizing: border-box;
+	transition: margin 0.3s;
+}
+
+ul.list li:not(:first-child)::before {
+	content: "";
+	display: block;
+	height: 0.1rem;
+	position: absolute;
+	top: 0rem;
+	right: 1.6rem;
+	left: 1.6rem;
+	background: #e6e6e6;
+}
+
+ul.list li:active {
+	background: rgba(120, 200, 208, 0.2);
+}
+
+ul.list li:active::before,
+ul.list li:active + li::before {
+	display: none;
+}
+
+ul.list li[correct="false"] {
+	color: #d94b3d;
+	font-weight: 700;
+}
+
+body[filter="Passed"] ul.list li[correct="false"],
+body[filter="Failed"] ul.list li[correct="true"],
+ul.list li.filter-hide {
+	/*display: none;*/
+	margin-top: -60px;
+	opacity: 0;
+	pointer-events: none;
+}

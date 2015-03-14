@@ -1,0 +1,22 @@
+#screen-daily{
+	touch-action: pan-x;
+}
+
+#daily-practice-card .front {
+	padding: 0 1.6rem;
+}
+
+#daily-practice-card h1 {
+	color: #4EC0CE;
+}
+
+#daily-practice-card p {
+	font-size: 1.8rem;
+	line-height: 2.4rem;
+	padding: 4rem 0 0;
+	margin: 3rem 1rem 4rem;
+}
+
+.screen-daily .flip-container {
+	display: none;
+}

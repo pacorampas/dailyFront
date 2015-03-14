@@ -1,0 +1,41 @@
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ellipsis, .ellipsis-children * {
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+.shadow {
+	-webkit-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.4);
+	-moz-box-shadow:    0px 0px 4px 0px rgba(50, 50, 50, 0.4);
+	box-shadow:         0px 0px 4px 0px rgba(50, 50, 50, 0.4);
+}
+
+
+.center-children {
+  text-align: center;
+  font-size: 0;
+}
+
+.center-children > * {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.center-children::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 100%;
+  background: transparent;
+  vertical-align: middle;
+  margin-left: -1px;
+}

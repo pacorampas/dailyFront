@@ -1,0 +1,58 @@
+drop-down {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 900;
+	display: block;
+	opacity: 1;
+	transition: opacity 600ms;
+}
+
+drop-down .drop-down-content {
+	position: absolute;
+	top: 0.4rem;
+	right: 0.4rem;
+	width: 23rem;
+	height: 24rem;
+	padding: 1.6rem;
+	background: #FAFAFA;
+	border-radius: 0.5rem;
+	z-index: 1;
+	color: #363A35;
+	font-size: 1.8rem;
+	text-align: center;
+	line-height: 2.5rem;	
+}
+
+drop-down[hidden] {
+	display: block;
+	opacity: 0;
+	pointer-events: none;
+}
+
+drop-down h1 > .icon {
+	margin-left: 0;
+	color: #F17059;
+}
+
+drop-down p{
+	font-size: 1.6rem;
+	opacity: 0.4;
+	padding: 0 1rem;
+}
+
+drop-down footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 0 1.6rem 0.8rem 1.6rem;
+}
+
+drop-down footer p {
+	margin-bottom: 0.8rem;
+	font-weight: bold;
+	opacity: 1;
+}

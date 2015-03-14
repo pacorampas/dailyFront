@@ -1,0 +1,103 @@
+button.reset {
+	background: transparent;
+	border: none;
+	outline: none !important;
+}
+
+.button {
+	font-size: 1.4rem;
+	position: relative;
+	width: 100%;
+	height: 5rem;
+	border: none;
+	margin-bottom: 0.8rem;
+	border-radius: 0.5rem;
+	background: #4ec0ce;
+	color: #333;
+	line-height: 5rem;
+	border-bottom: solid 0.2rem #4895a0;
+	color: #fff;
+	font-family: 'bariol';
+	font-size: 1.8rem;
+	outline: none !important;
+}
+
+.button[disabled],
+.button.disabled {
+	background-color: #E6E6E6 !important;
+	color: #ccc !important;
+	border-bottom: solid 0.2rem #ccc !important;
+}
+
+.button[disabled]:active,
+.button.disabled:active {
+	opacity: 1 !important;
+	height: 5rem !important;
+	top: 0 !important;
+	margin-bottom: 0.8rem !important;
+}
+
+.button:active,
+.button.pressed {
+	opacity: 0.7;
+	height: 4.8rem;
+	top: 0.2rem;
+	border: none;
+	margin-bottom: 1rem;
+}
+
+.button.half {
+	float: left;
+	width: 49%;
+	margin-right: 2%;
+}
+/* solo se puede utilizar con dos elementos por caja y que vayan consecutivos.
+Por lo tanto en una lista de más de dos elementos ejemplo <div> <button></button> <button></button> <button></button> </div> solo se puede usar para los dos últimos elementos
+Sino, es conveniente usar wrappers por cada dos botones, ejemplo <div> <button></button> <button></button> </div> <div> <button></button> <button></button> </div>
+*/
+.button.half:last-child {
+	margin-right: 0;
+}
+
+/* sizes */
+.button.small {
+	height: 4rem;
+	line-height: 4rem;
+	font-size: 1.4rem;
+}
+
+.button.small:active {
+	height: 3.8rem;
+}
+
+/* colors */
+.button.dark {
+	background: #6e6e6e;
+	border-bottom-color: #3c3c3b;
+}
+
+.button.dark-blue {
+	background: #1c7b89;
+	border-bottom-color: #0a6878;
+}
+
+.button.red {
+	background: #F17059;
+	border-bottom-color: #D94B3D;
+}
+
+.button.white {
+	background: #fff;
+	border: solid 0.1rem #ddd;
+	border-bottom: solid 0.2rem #ddd;
+	color: #999;
+}
+
+.button.white:active {
+	border-bottom: solid 0.1rem #ddd;
+	background-color: rgba(10, 10, 10, 0.1);
+}
+
+.button.white {
+	color: #999;
+}

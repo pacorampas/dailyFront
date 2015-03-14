@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'bariol';
+    src: url('font/Bariol_Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'bariol';
+    src: url('font/Bariol_Bold.otf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+  font-family: 'icon';
+  src: url('font/icon_font.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, * {
+    font-family: 'bariol';
+    font-style: normal;
+    font-weight: normal;
+}
