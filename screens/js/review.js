@@ -1,6 +1,6 @@
 var ScreenReview = (function(){
 	var rootScreen = Routing.rootScreen();
-	var listReview, listReviewItems;
+	var listReview;
 	var modal;
 	var cardServ;
 	var selector, selectorUl, selectorLi, selectorCloseButton;
@@ -16,8 +16,6 @@ var ScreenReview = (function(){
 		searchListeners();
 		dropDownListeners();
 
-		listReview = rootScreen.querySelector('#list-review');
-		printListExpression();
 		modal = document.getElementById('modal-review');
 		cardServ = new cardService( modal.querySelector('#daily-card-review') );
 		modal.addEventListener('click', function(){
@@ -25,14 +23,9 @@ var ScreenReview = (function(){
 			cardServ.flipToFront();	
 		})
 
-		listReviewItems = listReview.querySelectorAll('#list-review li');
-		for(var i = 0, l = listReviewItems.length; i < l; i++){
-			//open modal
-			listReviewItems[i].addEventListener('click', function(e){
-				e.preventDefault();
-				clickLi(this.dataset.id);
-			})
-		}
+		listReview = rootScreen.querySelector('#list-review');
+		printListExpression();
+		
 		searchInputText = searchInput.querySelector('#search-input-text');
 		searchInputText.addEventListener('keyup', function(event){
 			var e = event;
@@ -113,6 +106,12 @@ var ScreenReview = (function(){
 			correct = false;
 		}
 		li.setAttribute('correct', correct);
+
+		li.addEventListener('click', function(e){
+			e.preventDefault();
+			clickLi(this.dataset.id);
+		})
+		
 		listReview.appendChild(li);
 		return li;
 	}
