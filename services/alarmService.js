@@ -8,8 +8,6 @@ var alarmService = (function(){
 
 		isDate.setHours( (isDate.getHours() + rand) ); //le sumamos las horas para que suene en ahora + rand horas
 
-		//quitar
-		//var isDate = new Date();
 
 		cordova.plugins.notification.local.schedule({
 	        id: 1,
@@ -132,25 +130,38 @@ var alarmService = (function(){
 		cordova.plugins.notification.local.on('schedule', function(notification) {
 		    var date = new Date();
 		    date.setTime(notification.at*1000);
-		    localStorage['alarm'+notification.data] = date;
 
 		    if(notification.data == 'Daily'){
-	        	localStorage.practiceActive = 0;
 	        	dispatchEventPracticeActives();
 	        }
 		});
 
-		cordova.plugins.notification.local.on('trigger', function (notification) {
-	        if(notification.data == 'Practice'){
-	        	localStorage.practiceActive = 1;
-	        	dispatchEventPracticeActives();
-	        }
-	        if(notification.data.search('Life') >= 0){
-	        	practiceService.addLife();
-	        }
-	    });
+		firedAlarms(function(){
+			cordova.plugins.notification.local.on('trigger', function (notification) {
+		        firedAlarms();
+		    });
+		});
+	}
 
-	    clearAllAlarms();
+	function firedAlarms(callback){
+	    getAllAlarms(function(alarms){
+		    var now = new Date();
+			for(var i = 0, l = alarms.length; i < l; i++){
+				var date = new Date();
+				date.setTime(alarms[i].at*1000);
+				if(date <= now && alarms[i].id == 1){
+					localStorage.practiceActive = 1;
+		        	dispatchEventPracticeActives();
+				} else if( date <= now && (alarms[i].id == 3 || alarms[i].id == 3 || alarms[i].id == 4) ){
+					practiceService.addLife();
+				}
+			}
+			clearAllAlarms();
+			if(callback !== undefined){
+				callback();
+			}
+	    });
+	   
 	}
 
 	return {
