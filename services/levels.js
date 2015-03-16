@@ -69,13 +69,9 @@ var levelsService = (function(){
 	}
 
 	function dispatchEventAddedNewLevel(){
-		var addedNewLevel = new CustomEvent(
-						"addedNewLevel", 
-						{
-							bubbles: true,
-							cancelable: true
-						}
-					);
+		var addedNewLevel = document.createEvent('Event');
+    	addedNewLevel.initEvent('addedNewLevel', true, true);
+
 		document.dispatchEvent(addedNewLevel);
 	}
 
@@ -224,25 +220,18 @@ var activesService = (function(){
 		if(eventData !== undefined){
 			detail = eventData;
 		}
-		var uploadedActives = new CustomEvent(
-						"uploadedActives", 
-						{
-							bubbles: true,
-							cancelable: true,
-							detail: detail
-						}
-					);
+
+		var uploadedActives = document.createEvent('Event');
+		uploadedActives.detail = detail;
+    	uploadedActives.initEvent('uploadedActives', true, true);
+
 		document.dispatchEvent(uploadedActives);
 	}
 
 	function dispatchEventRefreshDaily(){
-		var refreshDaily = new CustomEvent(
-						"refreshDaily", 
-						{
-							bubbles: true,
-							cancelable: true
-						}
-					);
+		var refreshDaily = document.createEvent('Event');
+    	refreshDaily.initEvent('refreshDaily', true, true);
+
 		document.dispatchEvent(refreshDaily);
 	}
 	
@@ -345,13 +334,8 @@ var practiceService = (function(){
 		return activesService.getExressionByIdActive(errors[rand]);	
 	}
 
-	var uploadedLifes = new CustomEvent(
-					"uploadedLifes", 
-					{
-						bubbles: true,
-						cancelable: true
-					}
-				);
+	var uploadedLifes = document.createEvent('Event');
+    uploadedLifes.initEvent('uploadedLifes', true, true);
 
 	return {
 		getLifes: getLifes,

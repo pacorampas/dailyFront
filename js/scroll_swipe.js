@@ -52,14 +52,9 @@ var scrollPanes = function(section){
         width = window.innerWidth;
         goToStep(step, true);
     });
-    
-    var nextStepEvent = new CustomEvent(
-                        "nextStepEvent", 
-                        {
-                            bubbles: true,
-                            cancelable: true
-                        }
-                    );
+
+    var nextStepEvent = document.createEvent('Event');
+    nextStepEvent.initEvent('nextStepEvent', true, true);
 
     return {
         goToStep: goToStep

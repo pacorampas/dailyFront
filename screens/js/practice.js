@@ -60,13 +60,9 @@ var ScreenPractice = (function(){
 		}
 
 		function dispatchPracticedEvendt(){
-			var practicedDaily = new CustomEvent(
-							"practicedDaily", 
-							{
-								bubbles: true,
-								cancelable: true
-							}
-						);
+			var practicedDaily = document.createEvent('Event');
+    		practicedDaily.initEvent('practicedDaily', true, true);
+
 			document.dispatchEvent(practicedDaily);
 		}
 	}

@@ -46,7 +46,9 @@ var carrousel = (function (idWrapperPanels, idCounter){
 		var diffTouchPos = newTouchPos - touchPos;
 		touchPos = newTouchPos;
 		despl = despl + diffTouchPos;
-		element.style.transform = 'translate3d('+despl+'px, 0px, 0px)';
+		
+		element.style.webkitTransform = 'translate3d('+despl+'px, 0px, 0px)';
+		
 	}, false);
 
 	element.addEventListener("touchend", function(event){
@@ -67,7 +69,9 @@ var carrousel = (function (idWrapperPanels, idCounter){
 		//to force relayout else the touch events are lost
 		//http://stackoverflow.com/questions/16703157/android-4-chrome-hit-testing-issue-on-touch-events-after-css-transform
 		//element.innerHTML = element.innerHTML;
-		element.removeEventListener('transitionend', transitionEnd)
+		
+		element.addEventListener('webkitTransitionEnd', transitionEnd, false);
+			
 	}
 
 	window.addEventListener("resize", function(){
@@ -117,10 +121,12 @@ var carrousel = (function (idWrapperPanels, idCounter){
 		touchPos = start;
 		despl = start;
 		if(!notTransition){
-			element.addEventListener('transitionend', transitionEnd, false);
+			element.addEventListener('webkitTransitionEnd', transitionEnd, false);
 			element.classList.add('transition');
 		}
-		element.style.transform = 'translate3d('+despl+'px, 0px, 0px)';
+		
+		element.style.webkitTransform = 'translate3d('+despl+'px, 0px, 0px)';
+
 		element.dataset.step = step;
 		if(counter){
 			counter.dataset.step = step;
@@ -128,23 +134,19 @@ var carrousel = (function (idWrapperPanels, idCounter){
 		
 		nextStepEvent.step = step;
 		//element.dispatchEvent(nextStepEvent);
+		document.dispatchEvent(nextStepEvent);
 	}
 
-	var nextStepEvent = new CustomEvent(
-						"nextStepEvent", 
-						{
-							bubbles: true,
-							cancelable: true
-						}
-					);
+	var nextStepEvent = document.createEvent('Event');
+	nextStepEvent.initEvent('nextStepEventSwipe', true, true);
 
-	var swipingEvent = new CustomEvent(
+	/*var swipingEvent = new CustomEvent(
 						"swipingEvent", 
 						{
 							bubbles: true,
 							cancelable: true
 						}
-					);
+					);*/
 
 	return {
 		goToStep: goToStep
