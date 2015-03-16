@@ -24,6 +24,7 @@ cardService.prototype.printData = function(daily){
 	}
 	var fontSize = 36;
 	var lin = 36;
+
 	console.log(this.valueBack.offsetHeight +' > '+ 230);
 	while(this.valueFront.offsetHeight > 230){
 		fontSize--;
