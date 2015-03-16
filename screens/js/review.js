@@ -158,7 +158,9 @@ var ScreenReview = (function(){
 		}
 		liToActivate.setAttribute('active', true);
 		var value = liToActivate.textContent;
-		document.body.setAttribute('filter', value);
+		document.body.classList.remove('filterPassed');
+		document.body.classList.remove('filterFailed');
+		document.body.classList.add('filter'+value);
 		selector.querySelector('span:first-child').textContent = value;
 	}
 
