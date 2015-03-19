@@ -6,40 +6,7 @@ var ScreenHome = (function(){
 	var tabs = null;
 	var header = null;
 	var swipe = null;
-	var menuButtons, menuPanel, progressPassed,  powerOffButton;
-
-	function fakePractice(){
-		document.getElementById('fake-to-practice').addEventListener('click', function(){
-			Routing.goTo('practice');
-		})
-		document.getElementById('fake-to-practice-errors').addEventListener('click', function(){
-			Routing.goTo('practiceError');
-		})
-		document.getElementById('fake-to-wizard').addEventListener('click', function(){
-			navigator.notification.alert(
-			    'For entring to the wizard open and close the app!',
-			    function(){},
-			    'Activate wizard',
-			    'Ok'
-			);
-			if(localStorage.wizard){
-				delete localStorage.wizard;
-			}
-		})
-
-		document.getElementById('fake-dev-data').addEventListener('click', function(){
-			navigator.notification.alert(
-			    'Close and open the app to have the start dev data',
-			    function(){},
-			    'Dev data',
-			    'Ok'
-			);
-			if(localStorage.dev){
-				delete localStorage.dev;
-			}
-		})
-	}
-	fakePractice();
+	var menuButtons, menuPanel, progressPassed,  powerOffButton, settingsButton;
 
 	function generateTabs(){
 		for(key in arguments){
@@ -115,6 +82,11 @@ var ScreenHome = (function(){
         		navigator.app.exitApp();
         	}
 		}
+
+		settingsButton = rootScreen.querySelector('#settings-button');
+		settingsButton.addEventListener('click', function(){
+			Routing.goTo('fakes');
+		})
 	}
 
 	function open(){
@@ -123,21 +95,6 @@ var ScreenHome = (function(){
 		var wrapper = document.getElementById('home-panels-wrapper');
 		swipe = scrollPanes(wrapper);
 		menuListeners();
-		printDatesAlarms();
-	}
-
-	function printDatesAlarms(){
-		var div = document.getElementById('print-dates-alarms');
-
-		alarmService.getAllAlarms(function(alarms){
-			for(var i = 0; i < alarms.length; i++){
-				var p = document.createElement('p');
-				var date = new Date();
-				date.setTime(alarms[i].at*1000);
-				p.textContent = alarms[i].id+' - '+date;
-				div.appendChild(p);
-			}
-		});
 	}
 
 	open();

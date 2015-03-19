@@ -35,6 +35,12 @@ var Routing = (function(){
 			html: 'screens/wizard.html',
 			css: ['css/wizard.css', 'css/tabs.css', 'css/icon.css'],
 			js: ['js/swipe.js', 'screens/js/wizard.js']
+		},
+		fakes: {
+			id: 'screen-fakes',
+			html: 'screens/fakes.html',
+			css: [],
+			js: ['screens/js/fakes.js']
 		}
 	}
 
