@@ -5,6 +5,8 @@ function cardService(elementCard, flipListener){
 
 	this.card = elementCard;
 	this.flipper = this.card.parentNode;
+	this.valueFront = this.card.querySelector('.value-front');
+	this.valueBack = this.card.querySelector('.value-back');
 
 	if(flipListener){
 		this.flipAction();
@@ -16,22 +18,20 @@ cardService.prototype.printData = function(daily){
 		return;
 	}
 	
-	var valueFront = this.card.querySelector('#value-front');
-	var valueBack = this.card.querySelector('#value-back');
-	valueFront.textContent = daily.value;
+	this.valueFront.textContent = daily.value;
 	if(daily.explanation){
-		valueBack.textContent = daily.explanation;
+		this.valueBack.textContent = daily.explanation;
 	}
 	var fontSize = 36;
 	var lin = 36;
-	while(valueFront.offsetHeight > 260){
+	while(this.valueFront.offsetHeight > 260){
 		fontSize--;
-		valueFront.style.fontSize = fontSize+'px';
+		this.valueFront.style.fontSize = fontSize+'px';
 	}
 	var fontSize = 36;
-	while(valueBack.offsetHeight > 260){
+	while(this.valueBack.offsetHeight > 260){
 		fontSize--;
-		valueBack.style.fontSize = fontSize+'px';
+		this.valueBack.style.fontSize = fontSize+'px';
 	}
 }
 
@@ -48,9 +48,8 @@ cardService.prototype.flipToFront = function(){
 }
 
 cardService.prototype.changeBackText = function(text){
-	var valueBack = this.card.querySelector('#value-back');
-	valueBack.textContent = text;
-	valueBack.style.fontSize = '4rem';
+	this.valueBack.textContent = text;
+	this.valueBack.style.fontSize = '4rem';
 }
 
 cardService.prototype.check = function(check){

@@ -37,13 +37,9 @@ var alarmService = (function(){
 	}
 
 	function dispatchEventPracticeActives(){
-		var practiceActive = new CustomEvent(
-						"practiceActive", 
-						{
-							bubbles: true,
-							cancelable: true
-						}
-					);
+		var practiceActive = document.createEvent('Event');
+    	practiceActive.initEvent('practiceActive', true, true);
+
 		document.dispatchEvent(practiceActive);
 	}
 
