@@ -1,9 +1,9 @@
 .wrapper-card {
-	/*display: table;*/
-	width: 100%;
-	height: 100%;
-	padding: 1.6rem;
-	box-sizing: border-box;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
 }
 
 .wrapper-card-modal {
@@ -40,7 +40,6 @@
 	font-size: 1.5rem;
 	border-radius: 0.5rem;
 	color: #555;
-	padding: 0 1.6rem;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 	-webkit-transition: transform 0.5s;
@@ -59,10 +58,8 @@
 
 .card p {
 	font-size: 4rem;
-	padding: 7rem 2rem 0;
-	margin-top: -4.5rem; /* compensa el padding top y así tenemos margen abajo */
 	line-height: 1.2em;
-	box-sizing: border-box;
+	padding: 1.6rem;
 }
 
 .card [check="true"] {
@@ -86,11 +83,14 @@
 
 /* entire container, keeps perspective */
 .flip-container {
-	/*display: table-cell;*/
-	width: 100%;
-	vertical-align: middle;
 	-webkit-perspective: 1000;
 	perspective: 1000;
+
+	position: absolute;
+	top: 50%;
+	left: 1.6rem;
+	right: 1.6rem;
+	margin-top: -13.5rem;
 }
 
 	/* flip the pane when hovered */
@@ -124,9 +124,10 @@
 
 	position: absolute;
 	top: 0;
-	right: 0;
-	bottom: 0;
 	left: 0;
+	display: table;
+	width: 100%;
+	height: 100%;
 
 	border-radius: 0.5rem;
 
