@@ -40,7 +40,9 @@ var ScreenHome = (function(){
 			tabs[i].classList.remove('current');
 		}
 		tab.classList.add('current');
-		header.dataset.tab = tab.dataset.tab;
+		header.classList.remove('is-header-review');
+		header.classList.remove('is-header-daily');
+		header.classList.add('is-header-'+tab.dataset.tab);		
 	}
 
 	function menuListeners(){

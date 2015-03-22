@@ -47,11 +47,8 @@
 }
 
 .wrapper-card-practice{
-	display: table;
-	width: 100%;
-	height: 24rem;
-	padding: 0 1.6rem;
-	box-sizing: border-box;
+	height: 27rem;
+	position: relative;
 }
 
 .succes-ratio {

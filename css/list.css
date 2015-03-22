@@ -43,8 +43,8 @@ ul.list li[correct="false"] {
 	font-weight: 700;
 }
 
-body[filter="Passed"] ul.list li[correct="false"],
-body[filter="Failed"] ul.list li[correct="true"],
+body.filterPassed ul.list li[correct="false"],
+body.filterFailed ul.list li[correct="true"],
 ul.list li.filter-hide {
 	/*display: none;*/
 	margin-top: -60px;

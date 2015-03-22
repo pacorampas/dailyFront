@@ -158,7 +158,9 @@ var ScreenReview = (function(){
 		}
 		liToActivate.setAttribute('active', true);
 		var value = liToActivate.textContent;
-		document.body.setAttribute('filter', value);
+		document.body.classList.remove('filterPassed');
+		document.body.classList.remove('filterFailed');
+		document.body.classList.add('filter'+value);
 		selector.querySelector('span:first-child').textContent = value;
 	}
 
@@ -238,29 +240,32 @@ var ScreenReview = (function(){
 		
 		var idAlarm = parseInt(theLifes)+2;
 		alarmService.getAlarmById(idAlarm, function(not){
-			var date = new Date();
-			date.setTime(not[0].at*1000);
-			var date = countDownLifes(date);
+			
+			if(not !== undefined && not.length > 0){
+				var date = new Date();
+				date.setTime(not[0].at*1000);
+				var date = countDownLifes(date);
+			}
 
 			if(theLifes == 0){
 				life.textContent = 'Empty';
-				if(date.hour <= 0){
+				if(date && date.hour <= 0){
 					alarmsText.textContent = 'You don\'t have any lives. You will get a life in '+parseInt(date.min)+' minutes.';
-				}else{
+				}else if(date){
 					alarmsText.textContent = 'You don\'t have any lives. You will get a life in '+parseInt(date.hour)+' hours.';
 				}
 			} else if(theLifes == 1){
 				life.textContent = 'Almost Empty';
-				if(date.day <= 0){
+				if(date && date.day <= 0){
 					alarmsText.textContent = 'You have one lives left. You will get a life today.';
-				}else{
+				}else if(date){
 					alarmsText.textContent = 'You have one lives left. You will get a life in '+parseInt(date.day)+' days.';
 				}
 			} else if(theLifes == 2){
 				life.textContent = 'Almost Full';
-				if(date.day <= 0){
+				if(date && date.day <= 0){
 					alarmsText.textContent = 'You have two lives left. You will get a life today.';
-				}else{
+				}else if(date){
 					alarmsText.textContent = 'You have two lives left. You will get a life in '+parseInt(date.day)+' days.';
 				}
 			}
