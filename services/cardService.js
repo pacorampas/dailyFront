@@ -24,12 +24,13 @@ cardService.prototype.printData = function(daily){
 	}
 	var fontSize = 36;
 	var lin = 36;
-	while(this.valueFront.offsetHeight > 260){
+	console.log(this.valueBack.offsetHeight +' > '+ 230);
+	while(this.valueFront.offsetHeight > 230){
 		fontSize--;
 		this.valueFront.style.fontSize = fontSize+'px';
 	}
 	var fontSize = 36;
-	while(this.valueBack.offsetHeight > 260){
+	while(this.valueBack.offsetHeight > 230){
 		fontSize--;
 		this.valueBack.style.fontSize = fontSize+'px';
 	}
