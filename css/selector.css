@@ -11,18 +11,6 @@ selector span {
 	line-height: 5rem;
 }
 
-selector::after {
-	content: "";
-	display: inline-block;
-	width: 3.2rem;
-	height: 4.5rem;
-	background-image: url(img/arrow-selector.svg);
-	background-repeat: no-repeat;
-	background-position: center;
-	line-height: 4rem;
-	float: right;
-}
-
 selector ul {
 	display: inline-block;
 	position: absolute;
@@ -36,6 +24,10 @@ selector ul {
 	color: #333;
 	-webkit-transition: opacity 0.3s, bottom 0.3s 0.2s;
 	transition: opacity 0.3s, bottom 0.3s 0.2s;
+}
+
+selector i {
+	margin-left: 0; 
 }
 
 selector ul[hidden] {

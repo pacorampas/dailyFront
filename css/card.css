@@ -58,8 +58,8 @@
 
 .card p {
 	font-size: 4rem;
-	line-height: 1.2em;
-	padding: 5rem 1.6rem 3rem;
+	line-height: normal;
+	padding: 5rem 3rem 3rem;
 }
 
 .card [check="true"] {
