@@ -3,6 +3,7 @@
 	width: 100%;
 	height: 5rem;
 	background: #fff;
+	z-index: 1;
 }
 
 .tabs button {
@@ -28,40 +29,4 @@
 
 .tabs button.current {
 	border-bottom: solid 0.4rem #FFBD6B;
-}
-
-.panels-wrapper {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	/*transition: transform 400ms ease-out;*/
-}
-
-.panels-wrapper.transition {
-	transition: transform 0.15s ease-out;
-}
-
-/* Only for wizard */
-.panel-wz {
-	position: relative;
-	float: left;
-	display: inline-block;
-	width: 100%;
-	height: 100%;
-	vertical-align: top;
-	box-sizing: border-box;
-	overflow-x: scroll;
-}
-
-.panel {
-	position: relative;
-	display: inline-block;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin-right: 0;
-    vertical-align: top;
-    overflow: scroll;
 }

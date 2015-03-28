@@ -1,12 +1,25 @@
 #home-panels-wrapper {
-	overflow: auto;
-	font-size: 0;
-	white-space: nowrap;
 	position: absolute;
 	top: 5rem;
 	left: 0;
 	right: 0;
 	bottom: 0;
+}
+
+#home-panels-wrapper .scroller {
+	position: relative;
+	height: 100%;
+	width: 200%;
+}
+
+#home-panels-wrapper .panel {
+	position: relative;
+	width: 50%;
+	float: left;
+	display: inline-block;
+	height: 100%;
+	vertical-align: top;
+	box-sizing: border-box;
 }
 
 #home-panels-wrapper .panel * {

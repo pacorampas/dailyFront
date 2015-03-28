@@ -1,52 +1,68 @@
 var ScreenWizard = (function(){
 	var swipe = null;
-	var buttonCounterLeft, buttonCounterRight;
+	var wrapperCounterCard, buttonCounterLeft, buttonCounterRight;
 	var buttonEndWizard;
 
 	function open(){
-		buttonCounterLeft = document.getElementById('button-counter-wizard-left');
-		buttonCounterRight = document.getElementById('button-counter-wizard-right');
+		wrapperCounterCard = document.getElementById('wrapper-counter-card')
+		buttonCounterLeft = wrapperCounterCard.querySelector('#button-counter-wizard-left');
+		buttonCounterRight = wrapperCounterCard.querySelector('#button-counter-wizard-right');
 		buttonCounterRight.addEventListener('click', nextStep);
 		buttonCounterLeft.addEventListener('click', backStep);
-		swipe = carrousel('wizard-wrapper', 'counter-card');
+		//swipe = carrousel('wizard-wrapper', 'counter-card');
+		setTimeout(function(){
+			swipe = new IScroll('.wizard-background', {
+				scrollX: true,
+				scrollY: false,
+				momentum: false,
 
+				snap: true,
+				snapSpeed: 400,
+				keyBindings: true,
+				indicators: {
+					el: document.getElementById('indicator'),
+					resize: false
+				}
+			})
+			//click false dont work on android < 4.4
+			if(device.platform == 'Android' 
+			   && (device.version.substring(0, 1) == 5)
+			   || (device.version.substring(0, 1) == 4 
+			   	  && device.version.substring(2, 3) == 4)
+			){
+				swipe.options.click = true;
+			}
+		}, 1000);
+		
 		buttonEndWizard = document.getElementById('button-end-wizard');
-		buttonEndWizard.addEventListener('touchstart', goToHomePress);
-		buttonEndWizard.addEventListener('touchend', goToHome);
+		buttonEndWizard.addEventListener('click', goToHome);
 	}
 
 	function goToHome(){
-		buttonEndWizard.classList.remove('pressed');
 		close();
 		localStorage.wizard = false;
 		Routing.goTo('home');
 	}
 
-	function goToHomePress(){
-		buttonEndWizard.classList.add('pressed');
-	}
-
 	function close(){
+		wrapperCounterCard = null;
 		buttonCounterRight.removeEventListener('click', nextStep);
 		buttonCounterLeft.removeEventListener('click', backStep);
 		buttonCounterLeft = null;
 		buttonCounterRight = null;
-		swipe = null;
-		buttonEndWizard.removeEventListener('touchstart', goToHome);
-		buttonEndWizard.removeEventListener('touchstart', goToHomePress);
+		console.log(swipe);
+		swipe.destroy();
+		console.log(swipe);
+		buttonEndWizard.removeEventListener('click', goToHome);
 		buttonEndWizard = null;
 	}
 
 	function nextStep(){
-		var value = document.getElementById("counter-card").dataset.step;
-		value++;
-		swipe.goToStep(value);
+		swipe.next();
 	}
 
 	function backStep(){
-		var value = document.getElementById("counter-card").dataset.step;
-		value--;
-		swipe.goToStep(value);
+		swipe.prev();
 	}
 
 	open();

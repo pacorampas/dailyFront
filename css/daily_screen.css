@@ -2,7 +2,7 @@
 	touch-action: pan-x;
 }
 
-#daily-practice-card .front {
+#daily-practice-card .wrapper-button-practice-card {
 	padding: 0 1.6rem;
 }
 

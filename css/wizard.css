@@ -1,10 +1,25 @@
 .wizard-background {
 	background: #4EC0CE;
 	height: 100%;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
 }
 
-#wizard-wrapper.panels-wrapper {
-	bottom: 5rem;
+#wizard-wrapper {
+	position: relative;
+	top: -2.5rem;
+	height: 100%;
+	width: 500%;
+}
+
+.panel-wz {
+	float: left;
+	display: inline-block;
+	width: 20%;
+	height: 100%;
+	vertical-align: top;
+	box-sizing: border-box;
 }
 
 .wizard-card {
@@ -78,32 +93,38 @@
 	margin-left: -15rem;
 }
 
-#counter-card > div {
-	display: inline-block;
-	height: 1rem;
-	width: 1rem;
-	background: #fff;
-	border-radius: 50%;
-	margin-right: 0.5rem;
-	opacity: 0.5;
-}
-
-#counter-card > div:last-child {
-	margin-right: 0;
-}
-
-#counter-card[data-step="0"] > div:nth-child(1),
-#counter-card[data-step="1"] > div:nth-child(2),
-#counter-card[data-step="2"] > div:nth-child(3),
-#counter-card[data-step="3"] > div:nth-child(4),
-#counter-card[data-step="4"] > div:nth-child(5) {
-	opacity: 1;
-}
-
 .wrapper-counter-card i {
 	color: #fff;
 }
 
 .wrapper-counter-card i:active {
 	opacity: 0.8;
+}
+
+#indicator {
+	position: relative;
+	width: 11rem;
+	height: 1.5rem;
+	margin: 1rem auto;
+}
+
+#dotty {
+	position: absolute;
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+	background: #fff;
+}
+
+
+#indicator::before {
+	content: "";
+	position: absolute;
+	height: 0.2rem;
+	width: 100%;
+	background: #fff;
+	left: 0;
+	top: 50%;
+	margin-top: -0.1rem;
+	opacity: 0.5
 }

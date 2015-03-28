@@ -1,3 +1,4 @@
+var myScroll, myScroll2;
 var ScreenReview = (function(){
 	var rootScreen = Routing.rootScreen();
 	var listReview;
@@ -15,6 +16,10 @@ var ScreenReview = (function(){
 		selectorListeners();
 		searchListeners();
 		dropDownListeners();
+
+		setTimeout(function(){
+			myScroll2 = new IScroll('#screen-review');
+		}, 2000);
 
 		modal = document.getElementById('modal-review');
 		cardServ = new cardService( modal.querySelector('#daily-card-review') );

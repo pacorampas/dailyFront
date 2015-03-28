@@ -8,7 +8,17 @@ function composerService(composerTextarea, composerTextareaCopy){
 	        event.preventDefault();
 	        return false;
 	    }
+      self.text = this.value;
+      composerTextareaCopy.textContent = this.value;
+      var height = composerTextareaCopy.offsetHeight;
+      this.style.height = height+'px';
 	});
+  composerTextarea.addEventListener('keypress', function (event) {
+    self.text = this.value;
+    composerTextareaCopy.textContent = this.value;
+    var height = composerTextareaCopy.offsetHeight;
+    this.style.height = height+'px';
+  });
 	composerTextarea.addEventListener('keyup', function(e){
 		if(e.keyCode === 13) {
       //

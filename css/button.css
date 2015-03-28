@@ -37,8 +37,7 @@ button.reset {
 	margin-bottom: 0.8rem !important;
 }
 
-.button:active,
-.button.pressed {
+.button:active {
 	opacity: 0.7;
 	height: 4.8rem;
 	top: 0.2rem;

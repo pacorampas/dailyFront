@@ -12,5 +12,8 @@
 		}
 		//fire alarms
 		alarmService.whenDeviceIsReady();
+
+		//stop overflow scroll
+		document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
 	});
 })(Routing);

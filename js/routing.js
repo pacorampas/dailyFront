@@ -4,7 +4,7 @@ var Routing = (function(){
 			id: 'screen-home',
 			html: 'screens/home.html',
 			css: ['css/tabs.css', 'css/icon.css', 'css/home.css', 'css/menu.css'],
-			js: ['js/swipe.js', 'services/cardService.js', 'screens/js/home.js']
+			js: ['services/cardService.js', 'screens/js/home.js']
 		},
 		daily: {
 			id: 'screen-daily',
@@ -34,7 +34,7 @@ var Routing = (function(){
 			id: 'screen-wizard',
 			html: 'screens/wizard.html',
 			css: ['css/wizard.css', 'css/tabs.css', 'css/icon.css'],
-			js: ['js/swipe.js', 'screens/js/wizard.js']
+			js: ['screens/js/wizard.js']
 		},
 		fakes: {
 			id: 'screen-fakes',

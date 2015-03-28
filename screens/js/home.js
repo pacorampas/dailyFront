@@ -22,12 +22,12 @@ var ScreenHome = (function(){
 
 	function tabAction(tab, value){
 		tab.addEventListener('click', function(){
-			swipe.goToStep(value);
+			swipe.goToPage(value, 0, 200);
 		});
 	}
 
-	document.addEventListener('nextStepEvent', function (e) {
-		panelActive = e.step;
+	document.addEventListener('changedStepEvent', function () {
+		panelActive = swipe.currentPage.pageX;
 		tabCurrent();
 	}, false);
 
@@ -91,7 +91,34 @@ var ScreenHome = (function(){
 		generateTabs('daily', 'review');
 		header = document.getElementById('header-home');
 		var wrapper = document.getElementById('home-panels-wrapper');
-		swipe = scrollPanes(wrapper);
+		
+		setTimeout(function(){
+			swipe = new IScroll('#home-panels-wrapper', {
+				scrollX: true,
+				scrollY: false,
+				momentum: false,
+				//click: true
+				snap: true,
+				snapSpeed: 400,
+				keyBindings: true
+			})
+			
+			//click false dont work on android < 4.4
+			if(device.platform == 'Android' 
+			   && (device.version.substring(0, 1) == 5)
+			   || (device.version.substring(0, 1) == 4 
+			   	  && device.version.substring(2, 3) == 4)
+			){
+				swipe.options.click = true;
+			}
+
+			var changedStepEvent = document.createEvent('Event');
+    		changedStepEvent.initEvent('changedStepEvent', true, true);
+
+			swipe.on('scrollEnd', function () {
+			    document.dispatchEvent(changedStepEvent);
+			});
+		}, 1000);
 		menuListeners();
 	}
 

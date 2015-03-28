@@ -39,7 +39,6 @@ cardService.prototype.printData = function(daily){
 cardService.prototype.flipAction = function(val){
 	this.flipper.addEventListener('click', function(e){
 		e.stopPropagation();
-		e.preventDefault();
 		this.classList.toggle('flip');
 	});
 }
