@@ -189,6 +189,7 @@ var ScreenReview = (function(){
 		dropDownButtons = rootScreen.querySelectorAll('.drop-down-button');
 		for(var i = 0; i < dropDownButtons.length; i++){
 			dropDownButtons[i].addEventListener('click', function(e){
+				refreshDropDownLifes();
 				e.stopPropagation();
 				if(dropDown.hidden) {
 					dropDown.hidden = false;
@@ -230,49 +231,60 @@ var ScreenReview = (function(){
 		var theLifes = practiceService.getLifes();
 		dropDownLifes.dataset.lifes = theLifes;
 
-		if(theLifes == 0){
-			text.textContent = 'You don’t have more lives. You will need to wait, sorry.';
-		}
 		if(practiceService.getErrors() == 0){
 			text.textContent = 'Congratulations you are catched up! You don\'t need practice';
 		}
 
-		if(theLifes == 3){
+		if(theLifes == 0){
+			life.textContent = 'Empty';
+			text.textContent = 'You don’t have more lives. You will need to wait, sorry.';
+		}
+		else if(theLifes == 1){
+			life.textContent = 'Almost Empty';
+		}
+		else if(theLifes == 2){
+			life.textContent = 'Almost Full';
+		}
+		else if(theLifes == 3){
 			life.textContent = 'Full';
 			alarmsText.textContent = 'Awesome! No need for waiting.';
-			return; 
-		}
+		} 
 		
-		var idAlarm = parseInt(theLifes)+2;
-		alarmService.getAlarmById(idAlarm, function(not){
+		alarmService.getAlarmById([2, 3, 4], function(notifications){
 			
-			if(not !== undefined && not.length > 0){
+			if(notifications !== undefined && notifications.length > 0){
 				var date = new Date();
-				date.setTime(not[0].at*1000);
+				date.setTime(notifications[0].at*1000);
+				
+				for(var i = 1, l = notifications.length; i < l; i++){
+					var dateFor = new Date();
+					dateFor.setTime(notifications[i].at*1000);
+					if(dateFor < date){
+						date = dateFor;
+					}
+				}
 				var date = countDownLifes(date);
 			}
 
-			if(theLifes == 0){
-				life.textContent = 'Empty';
-				if(date && date.hour <= 0){
-					alarmsText.textContent = 'You don\'t have any lives. You will get a life in '+parseInt(date.min)+' minutes.';
-				}else if(date){
-					alarmsText.textContent = 'You don\'t have any lives. You will get a life in '+parseInt(date.hour)+' hours.';
-				}
-			} else if(theLifes == 1){
-				life.textContent = 'Almost Empty';
-				if(date && date.day <= 0){
-					alarmsText.textContent = 'You have one lives left. You will get a life today.';
-				}else if(date){
-					alarmsText.textContent = 'You have one lives left. You will get a life in '+parseInt(date.day)+' days.';
-				}
-			} else if(theLifes == 2){
-				life.textContent = 'Almost Full';
-				if(date && date.day <= 0){
-					alarmsText.textContent = 'You have two lives left. You will get a life today.';
-				}else if(date){
-					alarmsText.textContent = 'You have two lives left. You will get a life in '+parseInt(date.day)+' days.';
-				}
+			if(!date){
+				return;
+			}
+		
+			if(parseInt(date.day) > 0){
+				alarmsText.textContent = lifeSentence(theLifes)+' You will get a life in '+parseInt(date.day)+' days.';
+				setTimeout(refreshDropDownLifes, 1000*60*60*24);
+			}
+			else if(parseInt(date.hour) > 0){
+				alarmsText.textContent = lifeSentence(theLifes)+' You will get a life in '+parseInt(date.hour)+' hours.';
+				setTimeout(refreshDropDownLifes, 1000*60*60);
+			}
+			else if(parseInt(date.min) > 0){
+				alarmsText.textContent = lifeSentence(theLifes)+' You will get a life in '+parseInt(date.min)+' minutes.';
+				setTimeout(refreshDropDownLifes, 1000*60);
+			} 
+			else {
+				alarmsText.textContent = lifeSentence(theLifes)+' You will get a life in '+parseInt(date.sec)+' seconds.';
+				setTimeout(refreshDropDownLifes, 1000);
 			}
 		});
 	}
@@ -291,7 +303,24 @@ var ScreenReview = (function(){
 		}
 		objectDate.min = diff/1000/60;
 		
+		objectDate.sec = diff/1000%60;
+		
 		return objectDate;
+	}
+
+	function lifeSentence(lifes){
+		if(lifes == 1){
+			return 'You have one life left.';
+		}
+		if(lifes == 2){
+			return 'You have two lifes left.';
+		}
+		if(lifes == 3){
+			return 'You have three lifes left.';
+		}
+		if(lifes == 0){
+			return 'YOu don\' have any life left.';
+		}
 	}
 
 	document.addEventListener('uploadedLifes', function(){

@@ -24,7 +24,6 @@ var ScreenFake = (function(){
 		buttonsLifeAlarm = document.querySelectorAll('.life-alarm');
 		for( var i= 0; i < buttonsLifeAlarm.length; i++ ){
 			buttonsLifeAlarm[i].addEventListener('click', function(){
-				console.log(this.dataset.life);
 				setLifeAlarm(this.dataset.life);
 			});
 		}
@@ -120,7 +119,6 @@ var ScreenFake = (function(){
 	}
 
 	function setLifeAlarm(lifes){
-		console.log(this);
 		if (lifes == 3 || lifes === null || lifes === undefined) {
 			console.log('no lifes to save alarm');
 			return;
