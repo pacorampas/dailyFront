@@ -59,7 +59,7 @@
 .card p {
 	font-size: 4rem;
 	line-height: 1.2em;
-	padding: 1.6rem;
+	padding: 5rem 1.6rem 3rem;
 }
 
 .card [check="true"] {
