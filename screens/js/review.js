@@ -1,4 +1,3 @@
-var myScroll, myScroll2;
 var ScreenReview = (function(){
 	var rootScreen = Routing.rootScreen();
 	var listReview;
@@ -11,15 +10,12 @@ var ScreenReview = (function(){
 	var printedExpressionsFiltered = {};
 	var searchTimeoutId;
 	var buttonGoToPractice;
+	var listScroll;
 
 	function open(){
 		selectorListeners();
 		searchListeners();
 		dropDownListeners();
-
-		setTimeout(function(){
-			myScroll2 = new IScroll('#screen-review');
-		}, 2000);
 
 		modal = document.getElementById('modal-review');
 		cardServ = new cardService( modal.querySelector('#daily-card-review') );
@@ -95,6 +91,7 @@ var ScreenReview = (function(){
 			var expression = activesService.getExressionByIdActive(actives[key].idExpression);
 			printLi(expression, actives[key]);
 		}
+		listScroll = new IScroll('#screen-review');
 	}
 
 	function printLi(expression, active){
@@ -167,6 +164,9 @@ var ScreenReview = (function(){
 		document.body.classList.remove('filterFailed');
 		document.body.classList.add('filter'+value);
 		selector.querySelector('span:first-child').textContent = value;
+		setTimeout(function () {
+	        listScroll.refresh();
+	    }, 0);
 	}
 
 	function searchListeners(){
@@ -350,6 +350,10 @@ var ScreenReview = (function(){
 		printListExpression();
 	});
 
-	open();
+	return {
+		open: open
+	}
 
 }());
+
+Routing.setController(ScreenReview);

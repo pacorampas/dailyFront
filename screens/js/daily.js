@@ -58,6 +58,10 @@ var ScreenDaily = (function(){
 		cardServ.printData(daily);
 	});
 
-	open();
+	return {
+		open: open
+	}
 
 }());
+
+Routing.setController(ScreenDaily);

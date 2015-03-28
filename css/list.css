@@ -15,7 +15,6 @@ ul.list li {
 	outline: none !important;
 	background: #fff;
 	box-sizing: border-box;
-	transition: margin 0.3s;
 }
 
 ul.list li:not(:first-child)::before {
@@ -46,7 +45,8 @@ ul.list li[correct="false"] {
 body.filterPassed ul.list li[correct="false"],
 body.filterFailed ul.list li[correct="true"],
 ul.list li.filter-hide {
-	margin-top: -60px;
+	/*margin-top: -60px;
 	opacity: 0;
-	pointer-events: none;
+	pointer-events: none;*/
+	display: none;
 }
