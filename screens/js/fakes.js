@@ -106,7 +106,7 @@ var ScreenFake = (function(){
 	function setPracticeAlarm() {
 		var isDate = new Date();
 
-		isDate.setMinutes( (isDate.getMinutes() + 1) ); //le sumamos las horas para que suene en ahora + rand horas
+		isDate.setSeconds( (isDate.getSeconds() + 10) ); //le sumamos las horas para que suene en ahora + rand horas
 
 		cordova.plugins.notification.local.schedule({
 	        id: 1,
@@ -114,6 +114,7 @@ var ScreenFake = (function(){
 	        text: 'Our teacher is waiting you for testing your progress',
 	        at: isDate,
 	        badge: 1,
+	        smallIcon: 'res://drawable/icon_small.png',
 	        data: 'Practice'
 	    });
 	}
@@ -127,15 +128,18 @@ var ScreenFake = (function(){
 		var isDate = new Date();
 		
 		if(lifes == 0) { //mañana
-			isDate.setMinutes( isDate.getMinutes() + 1 );
+			//isDate.setMinutes( isDate.getMinutes() + 1 );
+			isDate.setSeconds( isDate.getSeconds() + 5 );
 			console.log('Alarm +1 day');
 		}
 		else if(lifes == 1) { //en 3 días
-			isDate.setMinutes( isDate.getMinutes() + 3 );
+			//isDate.setMinutes( isDate.getMinutes() + 3 );
+			isDate.setSeconds( isDate.getSeconds() + 15 );
 			console.log('Alarm +3 day');
 		}
 		else if(lifes == 2) { //en 7 días
-			isDate.setMinutes( isDate.getMinutes() + 7 );
+			isDate.setMinutes( isDate.getMinutes() + 1 );
+			//isDate.setSeconds( isDate.getSeconds() + 20 );
 			console.log('Alarm +7 day');
 		}
 		var data = 'Life-'+lifes;
@@ -145,6 +149,7 @@ var ScreenFake = (function(){
 				title: 'New life',
 				text: 'You have a new life for practice errors',
 				at: isDate,
+				smallIcon: 'res://drawable-ldpi/icon_small.png',
 				data: data
 			}
 		);

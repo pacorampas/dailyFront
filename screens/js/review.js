@@ -237,7 +237,9 @@ var ScreenReview = (function(){
 
 		if(theLifes == 0){
 			life.textContent = 'Empty';
-			text.textContent = 'You don’t have more lives. You will need to wait, sorry.';
+			if(practiceService.getErrors() != 0){
+				text.textContent = 'You don’t have more lives. You will need to wait, sorry.';
+			}
 		}
 		else if(theLifes == 1){
 			life.textContent = 'Almost Empty';
@@ -269,8 +271,12 @@ var ScreenReview = (function(){
 			if(!date){
 				return;
 			}
-		
-			if(parseInt(date.day) > 0){
+			
+			if(parseInt(date.diff) < 0){
+				alarmsText.textContent = lifeSentence(theLifes)+' You have a notification to get one life right now.';
+				setTimeout(refreshDropDownLifes, 5000);
+			}
+			else if(parseInt(date.day) > 0){
 				alarmsText.textContent = lifeSentence(theLifes)+' You will get a life in '+parseInt(date.day)+' days.';
 				setTimeout(refreshDropDownLifes, 1000*60*60*24);
 			}
@@ -293,6 +299,8 @@ var ScreenReview = (function(){
 		var objectDate = new Object();
 		var now = new Date();
 		var diff = date - now;
+		objectDate.diff = diff;
+
 		objectDate.day = diff/1000/60/60/24;
 		if(objectDate.day > 1){
 			diff = (diff/1000/60/60)%24;
@@ -319,7 +327,7 @@ var ScreenReview = (function(){
 			return 'You have three lifes left.';
 		}
 		if(lifes == 0){
-			return 'YOu don\' have any life left.';
+			return 'You don\' have any life left.';
 		}
 	}
 

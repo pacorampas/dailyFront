@@ -14,7 +14,7 @@ var alarmService = (function(){
 	        title: 'Put in practice',
 	        text: 'Our teacher is waiting you for testing your progress',
 	        at: isDate,
-	        badge: 1,
+	        smallIcon: 'res://drawable/icon_small.png',
 	        data: 'Practice'
 	    });
 	}
@@ -32,6 +32,7 @@ var alarmService = (function(){
 				title: 'Your daily is waiting for you',
 				text: 'Our teacher has generate your daily expression',
 				at: isDate,
+				smallIcon: 'res://drawable/icon_small.png',
 				data: 'Daily'
 		});
 	}
@@ -116,6 +117,7 @@ var alarmService = (function(){
 				title: 'New life',
 				text: 'You have a new life for practice errors',
 				at: isDate,
+				smallIcon: 'res://drawable/icon_small.png',
 				data: data
 			}
 		);
@@ -131,33 +133,24 @@ var alarmService = (function(){
 	        	dispatchEventPracticeActives();
 	        }
 		});
-
-		firedAlarms(function(){
-			cordova.plugins.notification.local.on('trigger', function (notification) {
-		        firedAlarms();
-		    });
+		    
+	    cordova.plugins.notification.local.on("clear", function (notification, state) {
+	    	fireNotification(notification);
 		});
+
+		cordova.plugins.notification.local.on("click", function (notification, state) {
+		    clearAlarmById(notification.id);
+		})
+
 	}
 
-	function firedAlarms(callback){
-	    getAllAlarms(function(alarms){
-		    var now = new Date();
-			for(var i = 0, l = alarms.length; i < l; i++){
-				var date = new Date();
-				date.setTime(alarms[i].at*1000);
-				if(date <= now && alarms[i].id == 1){
-					localStorage.practiceActive = 1;
-		        	dispatchEventPracticeActives();
-				} else if( date <= now && (alarms[i].id == 3 || alarms[i].id == 3 || alarms[i].id == 4) ){
-					practiceService.addLife();
-				}
-			}
-			clearAllAlarms();
-			if(callback !== undefined){
-				callback();
-			}
-	    });
-	   
+	function fireNotification(notification){
+	    if(notification.id == 1){
+			localStorage.practiceActive = 1;
+        	dispatchEventPracticeActives();
+		} else if(notification.id == 2 || notification.id == 3 || notification.id == 4){
+			practiceService.addLife();
+		}
 	}
 
 	return {
