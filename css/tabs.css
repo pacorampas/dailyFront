@@ -28,5 +28,5 @@
 }
 
 .tabs button.current {
-	border-bottom: solid 0.4rem #FFBD6B;
+	font-weight: bold;
 }

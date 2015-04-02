@@ -27,18 +27,12 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	opacity: 0;
-	transition: opacity 0.3s;
+	display: none;
 }
 
-.header.is-header-review #header-home-review {
-	opacity: 1;
-	transition: opacity 0.2s 0.1s;
-}
-
+.header.is-header-review #header-home-review,
 .header.is-header-daily #header-home-daily {
-	opacity: 1;
-	transition: opacity 0.2s 0.1s;
+	display: block;
 }
 
 #home-panels-wrapper {
@@ -126,4 +120,18 @@
 .menu-buttons button {
 	font-size: 1.8rem;
 	display: block;
+}
+
+#wrapper-indicator {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+#indicator {
+	position: absolute;
+	width: 50%;
+	height: 0.4rem;
+	background: #FFBD6B;;
 }

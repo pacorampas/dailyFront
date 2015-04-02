@@ -9,30 +9,29 @@ var ScreenWizard = (function(){
 		buttonCounterRight = wrapperCounterCard.querySelector('#button-counter-wizard-right');
 		buttonCounterRight.addEventListener('click', nextStep);
 		buttonCounterLeft.addEventListener('click', backStep);
-		//swipe = carrousel('wizard-wrapper', 'counter-card');
-		setTimeout(function(){
-			swipe = new IScroll('.wizard-background', {
-				scrollX: true,
-				scrollY: false,
-				momentum: false,
+		
+		swipe = new IScroll('.wizard-background', {
+			scrollX: true,
+			scrollY: false,
+			momentum: false,
 
-				snap: true,
-				snapSpeed: 400,
-				keyBindings: true,
-				indicators: {
-					el: document.getElementById('indicator'),
-					resize: false
-				}
-			})
-			//click false dont work on android < 4.4
-			if(device.platform == 'Android' 
-			   && (device.version.substring(0, 1) == 5)
-			   || (device.version.substring(0, 1) == 4 
-			   	  && device.version.substring(2, 3) == 4)
-			){
-				swipe.options.click = true;
+			snap: true,
+			snapSpeed: 400,
+			keyBindings: true,
+			indicators: {
+				el: document.getElementById('indicator'),
+				resize: false
 			}
-		}, 1000);
+		})
+		
+		//click false dont work on android < 4.4
+		if(device.platform == 'Android' 
+		   && (device.version.substring(0, 1) == 5)
+		   || (device.version.substring(0, 1) == 4 
+		   	  && device.version.substring(2, 3) == 4)
+		){
+			swipe.options.click = true;
+		}
 		
 		buttonEndWizard = document.getElementById('button-end-wizard');
 		buttonEndWizard.addEventListener('click', goToHome);
@@ -65,6 +64,10 @@ var ScreenWizard = (function(){
 		swipe.prev();
 	}
 
-	open();
+	return {
+		open: open
+	}
 
 }(Routing));
+
+Routing.setController(ScreenWizard);

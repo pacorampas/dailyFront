@@ -99,7 +99,11 @@ var ScreenHome = (function(){
 			//click: true
 			snap: true,
 			snapSpeed: 400,
-			keyBindings: true
+			keyBindings: true,
+			indicators: {
+				el: document.getElementById('wrapper-indicator'),
+				resize: false
+			}
 		})
 		
 		//click false dont work on android < 4.4
