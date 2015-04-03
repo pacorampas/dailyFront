@@ -358,8 +358,38 @@ var ScreenReview = (function(){
 		printListExpression();
 	});
 
+	function isOpenedDropDown(){
+		return !dropDown.hidden;
+	}
+
+	function closeDropDown(){
+		dropDown.hidden = true;
+	}
+
+	function isOpenedSelector(){
+		return !selectorUl.hidden;
+	}
+
+	function closeSelector(){
+		selectorUl.hidden = true;
+	}
+
+	function isOpenedModal(){
+		return !modal.hidden;
+	}
+
+	function closeModal(){
+		modal.hidden = true;
+	}
+
 	return {
-		open: open
+		open: open,
+		isOpenedDropDown: isOpenedDropDown,
+		closeDropDown: closeDropDown,
+		isOpenedSelector: isOpenedSelector,
+		closeSelector: closeSelector,
+		isOpenedModal: isOpenedModal,
+		closeModal: closeModal
 	}
 
 }());

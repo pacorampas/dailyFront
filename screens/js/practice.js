@@ -6,8 +6,10 @@ var ScreenPractice = (function(){
 	var daily;
 	var cardServ;
 	var continueWrapper, continueButton;
+	var isOpened;
 
 	function open(){
+		isOpened = true;
 		localStorage.practiceActive = 0;
 		alarmService.setDailyAlarm();
 		rootScreen = Routing.rootScreen();
@@ -97,6 +99,7 @@ var ScreenPractice = (function(){
 	}
 
 	function close(){
+		isOpened = false;
 		quitForce = false;
 		buttonQuit.removeEventListener('click', quit);
 		buttonQuit = null;
@@ -109,8 +112,14 @@ var ScreenPractice = (function(){
 		continueButton = null;
 	}
 
+	function isOpened(){
+		return isOpened;
+	}
+
 	return {
-		open: open
+		open: open,
+		quit: quit,
+		isOpened: isOpened
 	}
 
 })();

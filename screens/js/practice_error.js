@@ -1,4 +1,4 @@
-var ScreenPracticeErrors = (function(){
+var ScreenPracticeError = (function(){
 	var rootScreen;
 	var checkButton;
 	var buttonQuit;
@@ -12,8 +12,10 @@ var ScreenPracticeErrors = (function(){
 	var counterLifes;
 	var exitButton;
 	var lifes;
+	var isOpened;
 
 	function open(){
+		isOpened = true;
 		rootScreen = Routing.rootScreen();
 		runCard();
 		runComposer();
@@ -150,6 +152,7 @@ var ScreenPracticeErrors = (function(){
 
 
 	function close(){
+		isOpened = false;
 		quitForce = false;
 		buttonQuit.removeEventListener('click', quit);
 		buttonQuit = null;
@@ -170,12 +173,18 @@ var ScreenPracticeErrors = (function(){
 		counterLifes = null;
 	}
 
+	function isOpened(){
+		return isOpened;
+	}
+
 	return {
-		open: open
+		open: open,
+		quit: quit,
+		isOpened: isOpened
 	}
 
 })();
 
 //respuesta uno contexto uno expression cuarta
 
-Routing.setController(ScreenPracticeErrors);
+Routing.setController(ScreenPracticeError);

@@ -6,7 +6,7 @@ var ScreenHome = (function(){
 	var tabs = null;
 	var header = null;
 	var swipe = null;
-	var menuButtons, swipeMenu, progressPassed,  powerOffButton, settingsButton;
+	var menuButtons, swipeMenu, progressPassed,  powerOffButton, settingsButton, menuOverlay;
 
 	function generateTabs(){
 		for(key in arguments){
@@ -48,7 +48,7 @@ var ScreenHome = (function(){
 	function menuListeners(){
 		swipeMenu = swipeMenuService('swiper-menu', 280);
 		menuButtons = rootScreen.querySelectorAll('.menu-button');
-		var menuOverlay = document.querySelector('.menu-overlay');
+		menuOverlay = document.querySelector('.menu-overlay');
 		for(var i = 0; i < menuButtons.length; i++){
 			menuButtons[i].addEventListener('click', function(e){
 				e.stopPropagation();
@@ -146,6 +146,36 @@ var ScreenHome = (function(){
 		
 		menuListeners();
 	}
+
+	document.addEventListener('backbutton', function(){
+		if(swipeMenu.isOpened()){
+			swipeMenu.close(200, function(){
+				menuOverlay.hidden = true;
+				menuOverlay.style.opacity = 0;
+			});
+		} 
+		else if(ScreenReview.isOpenedDropDown()){
+			ScreenReview.closeDropDown();
+		}
+		else if(ScreenReview.isOpenedSelector()){
+			ScreenReview.closeSelector();
+		}
+		else if(ScreenReview.isOpenedModal()){
+			ScreenReview.closeModal();
+		}
+		else if(typeof(ScreenPractice) !== "undefined" && ScreenPractice.isOpened()){
+			ScreenPractice.quit();
+		}
+		else if(typeof(ScreenPracticeError) !== "undefined" && ScreenPracticeError.isOpened()){
+			ScreenPracticeError.quit();
+		}
+		else {
+			console.log('paso');
+			navigator.app.exitApp();
+		}
+	})
+	
+//menubutton
 
 	return {
 		open: open

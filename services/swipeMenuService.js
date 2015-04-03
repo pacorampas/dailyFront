@@ -67,6 +67,7 @@ var swipeMenuService = (function(idSlideMenu, maxWidth) {
 		menu.style.webkitTransform = 'translate3d(0,0,0)';
 		pos = 0;
 		if(callBack !== undefined){
+			console.log('paso');
 			callBack();
 		}
 	}				
@@ -85,12 +86,21 @@ var swipeMenuService = (function(idSlideMenu, maxWidth) {
 		}
 	}
 
+	function isOpened(){
+		if(pos === 0){
+			return false
+		} else {
+			return true;
+		}
+	}
+
 	var openningMenuEvent = document.createEvent('Event');
 	openningMenuEvent.initEvent('openningMenuEvent', true, true);
 
 	return {
 		open: open,
 		close: close,
-		toggle: toggle
+		toggle: toggle,
+		isOpened: isOpened
 	}
 });
