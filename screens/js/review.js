@@ -229,7 +229,7 @@ var ScreenReview = (function(){
 		var alarmsText = dropDownLifes.querySelector('#drop-down-lifes-alarms');
 		var text = dropDownLifes.querySelector('#drop-down-lifes-text');
 		var theLifes = practiceService.getLifes();
-		dropDownLifes.dataset.lifes = theLifes;
+		rootScreen.dataset.lifes = theLifes;
 
 		if(practiceService.getErrors() == 0){
 			text.textContent = 'Congratulations you are catched up! You don\'t need practice';

@@ -56,3 +56,19 @@ drop-down footer p {
 	font-weight: bold;
 	opacity: 1;
 }
+
+[data-lifes="0"] .icon.heart::before {
+	content: '\E800';
+}
+
+[data-lifes="1"] .icon.heart::before {
+	content: '\E802';
+}
+
+[data-lifes="2"] .icon.heart::before {
+	content: '\E801';
+}
+
+[data-lifes="3"] .icon.heart::before {
+	content: '\E804';
+}

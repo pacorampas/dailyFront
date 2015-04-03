@@ -26,10 +26,6 @@ i + i {
 	content: '\f0c9';
 }
 
-.icon.heart::before, i.heart::before {
-	content: '\f004';
-}
-
 .icon.search::before, i.search::before {
 	content: '\f002';
 }
@@ -52,6 +48,11 @@ i + i {
 
 .icon.caret-down::before, i.caret-down::before {
 	content: '\f0d7';
+}
+
+.icon.heart::before, i.heart::before {
+	content: '\E804';
+	font-family: 'icon-heart'
 }
 
 .icon.left,

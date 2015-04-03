@@ -1,18 +1,25 @@
 @font-face {
     font-family: 'bariol';
-    src: url('font/Bariol_Regular.otf') format('truetype');
+    src: url('font/Bariol_Regular.otf');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'bariol';
-    src: url('font/Bariol_Bold.otf') format('truetype');
+    src: url('font/Bariol_Bold.otf');
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
   font-family: 'icon';
-  src: url('font/icon_font.otf') format('truetype');
+  src: url('font/icon_font.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'icon-heart';
+  src: url('font/heart_icons.ttf');
   font-weight: normal;
   font-style: normal;
 }
