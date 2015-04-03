@@ -54,16 +54,29 @@ var ScreenHome = (function(){
 				e.stopPropagation();
 				swipeMenu.toggle(400, function(opened){
 					menuOverlay.hidden = !opened;
+					if(opened){
+						menuOverlay.style.opacity = 0.7;
+					}else{
+						menuOverlay.style.opacity = 0;
+					}
 				});
 			})
 		}
 
+		var prevPerc = 0;
 		document.addEventListener('openningMenuEvent', function(event){
-			perc = event.percentage;
+			perc = event.percentage.toFixed(1);
+			if(prevPerc === perc){
+				return;
+			}
+			prevPerc = perc;
 			if(perc >= 0.7){
 				perc = 0.7;
 			}
 			menuOverlay.hidden = false;
+			if(parseFloat(perc) === 0){
+				menuOverlay.hidden = true;
+			}
 			menuOverlay.style.opacity = perc;
 		})
 

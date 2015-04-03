@@ -46,6 +46,7 @@
 	display: block;
 	opacity: 0.7;	
 	pointer-events: auto;
+	transition: opacity 0.1s;
 }
 
 .menu-overlay[hidden] {

@@ -14,17 +14,29 @@
 	right: 0;
 	z-index: 100;
 	padding: 1.6rem;
-	background: rgba(0,0,0,0.2);
 	opacity: 1;
 	display: block;
-	-webkit-transition: opacity 0.3s;
-	transition: opacity 0.3s;
+}
+
+.wrapper-card-modal::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: #000;
+	opacity: 0.2;
+	transition: opacity 0.2s;
+}
+
+.wrapper-card-modal[hidden]::before {
+	opacity: 0;
 }
 
 .wrapper-card-modal[hidden] {
 	display: block;
 	pointer-events: none;
-	opacity: 0;
 }
 
 .wrapper-card-modal[hidden] .card {

@@ -41,20 +41,6 @@ var swipeMenuService = (function(idSlideMenu, maxWidth) {
 
 	menu.addEventListener('touchend', function(){
 		var endTimeStamp = event.timeStamp;
-		var fastOpen = false;
-		
-		if( (endTimeStamp - timeStamp) < 200 ){
-			//fast swipe
-			if(dir === 'ltr'){
-				open(200);
-			} else {
-				close(200);
-			}
-			var percentage = pos/maxWidth;
-			openningMenuEvent.percentage = percentage;
-			document.dispatchEvent(openningMenuEvent);
-			return;
-		}
 
 		if(pos > middleWidth){
 			open(100);
