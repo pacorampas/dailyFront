@@ -53,30 +53,32 @@
 	</section>
 </section>
 
-<section id="menu-panel" class="menu-panel" hidden>
-	<div class="menu-content">
-		<header>
-			<div class="menu-button icon arrow-left left"></div>
-			<h1>YOUR PROGRESS</h1>
-		</header>
-		<div class="circle-progress center-children">
-			<div>
-				<span class="progress-passed">48</span> / <span class="progress-total">365</span><hr>
-				<span class="progress-title">DAILIES PASSED</span>
+<section id="menu-panel" class="menu-panel">
+	<div id="swiper-menu" class="menu-content-wrapper">
+		<div class="menu-content">
+			<header>
+				<div class="menu-button icon arrow-left left"></div>
+				<h1>YOUR PROGRESS</h1>
+			</header>
+			<div class="circle-progress center-children">
+				<div>
+					<span class="progress-passed">48</span> / <span class="progress-total">365</span><hr>
+					<span class="progress-title">DAILIES PASSED</span>
+				</div>
+			</div>
+			<div class="menu-buttons">
+				<button id="settings-button" class="reset">
+					<i class="gear"></i>
+					Setings
+				</button>
+				<button id="power-off"  class="reset">
+					<i class="power-off"></i>
+					Exit
+				</button>
 			</div>
 		</div>
-		<div class="menu-buttons">
-			<button id="settings-button" class="reset">
-				<i class="gear"></i>
-				Setings
-			</button>
-			<button id="power-off"  class="reset">
-				<i class="power-off"></i>
-				Exit
-			</button>
-		</div>
 	</div>
-	<div class="menu-button menu-overlay"></div>
+	<div class="menu-button menu-overlay" hidden></div>
 </section>
 
 <!-- modal card for review -->

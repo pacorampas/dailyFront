@@ -6,7 +6,7 @@ var ScreenHome = (function(){
 	var tabs = null;
 	var header = null;
 	var swipe = null;
-	var menuButtons, menuPanel, progressPassed,  powerOffButton, settingsButton;
+	var menuButtons, swipeMenu, progressPassed,  powerOffButton, settingsButton;
 
 	function generateTabs(){
 		for(key in arguments){
@@ -46,18 +46,27 @@ var ScreenHome = (function(){
 	}
 
 	function menuListeners(){
-		menuPanel = rootScreen.querySelector('#menu-panel');
+		swipeMenu = swipeMenuService('swiper-menu', 280);
 		menuButtons = rootScreen.querySelectorAll('.menu-button');
+		var menuOverlay = document.querySelector('.menu-overlay');
 		for(var i = 0; i < menuButtons.length; i++){
 			menuButtons[i].addEventListener('click', function(e){
 				e.stopPropagation();
-				if(menuPanel.hidden) {
-					menuPanel.hidden = false;
-				} else {
-					menuPanel.hidden = true;
-				}
+				swipeMenu.toggle(400, function(opened){
+					menuOverlay.hidden = !opened;
+				});
 			})
 		}
+
+		document.addEventListener('openningMenuEvent', function(event){
+			perc = event.percentage;
+			if(perc >= 0.7){
+				perc = 0.7;
+			}
+			menuOverlay.hidden = false;
+			menuOverlay.style.opacity = perc;
+		})
+
 		progressPassed = rootScreen.querySelector('.progress-passed');
 		progressPassed.textContent = practiceService.calculatePassed();
 		document.addEventListener('uploadedActives', function(){
@@ -98,7 +107,7 @@ var ScreenHome = (function(){
 			momentum: false,
 			//click: true
 			snap: true,
-			snapSpeed: 400,
+			snapSpeed: 200,
 			keyBindings: true,
 			indicators: {
 				el: document.getElementById('wrapper-indicator'),
