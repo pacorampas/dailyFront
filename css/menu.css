@@ -20,7 +20,7 @@
 	bottom: 0;
 	left: 0;
 	width: 28rem;
-	margin-left: -27.5rem;
+	margin-left: -26rem;
 	z-index: 1;
 	pointer-events: auto;
 }
@@ -29,8 +29,8 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: -0.5rem;
-	right: 0.5rem;
+	left: -2rem;
+	right: 2rem;
 	bottom: 0;
 	padding: 0 1.6rem;
 	background: #fff;
