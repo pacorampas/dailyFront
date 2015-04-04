@@ -9,7 +9,7 @@ var ScreenReview = (function(){
 	var printedExpressions = {};
 	var printedExpressionsFiltered = {};
 	var searchTimeoutId;
-	var buttonGoToPractice;
+	var buttonsGoToPractice;
 	var listScroll;
 
 	function open(){
@@ -21,7 +21,7 @@ var ScreenReview = (function(){
 		cardServ = new cardService( modal.querySelector('#daily-card-review') );
 		modal.addEventListener('click', function(){
 			modal.hidden = true;
-			cardServ.flipToFront();	
+			cardServ.flipToFront();
 		})
 
 		listReview = rootScreen.querySelector('#list-review');
@@ -41,12 +41,7 @@ var ScreenReview = (function(){
 					searchByWord('');
 				}, 500);
 			}
-		});
-		//for preventing scrollX on input (and all page)
-        searchInputText.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, false);
-            
+		});        
 	}
 
 	var valPrev = '';
@@ -199,30 +194,59 @@ var ScreenReview = (function(){
 			})
 		}
 		
-		buttonGoToPractice = rootScreen.querySelector('#go-to-practice-button');
+		buttonsGoToPractice = rootScreen.querySelectorAll('.go-to-practice-button');
+		buttonsGoToPracticeListener();
 		refreshDropDownLifes();
+	}
+
+	function buttonsGoToPracticeListener(){
+		buttonsGoToPracticeRefreshDisabled();
+
+		for(var i = 0; i < buttonsGoToPractice.length; i++){
+			buttonsGoToPractice[i].addEventListener('click', goToPractice);
+		}
 	}
 
 	function goToPractice(event){
 		event.stopPropagation();
+		event.preventDefault();
+		
+		if(this.dataset.disabled == 'true'){
+			var message = '';
+			if(practiceService.getLifes() <= 0)
+				message = 'You can\'t review now because you don\'t have any life. Wait for get one.';
+			else {
+				message = 'Congratulationss!! You are catched up so you don\'t have errors to practice.';
+			}
+
+			navigator.notification.alert(
+			    message,
+			    function(){},
+			    'Practice errors is disabled',
+			    'Ok'
+			);
+			return;
+		}
+
 		Routing.goTo('practiceError');
 		setTimeout(function(){
 			dropDown.hidden = true;
 		}, 500);
 	}
 
-	function buttonGoToPracticeListener(){
+	function buttonsGoToPracticeRefreshDisabled(){
+		var disabled = false;
 		if(practiceService.getLifes() <= 0 || practiceService.getErrors().length <= 0){
-			buttonGoToPractice.disabled = true;
-			buttonGoToPractice.removeEventListener('click', goToPractice);
-		} else {
-			buttonGoToPractice.disabled = false;
-			buttonGoToPractice.addEventListener('click', goToPractice);
+			disabled = true;
+		}
+	
+		for(var i = 0; i < buttonsGoToPractice.length; i++){
+			buttonsGoToPractice[i].dataset.disabled = disabled;
 		}
 	}
 
 	function refreshDropDownLifes(){
-		buttonGoToPracticeListener();
+		buttonsGoToPracticeRefreshDisabled();
 
 		var dropDownLifes = document.getElementById('drop-down-lifes');
 		var life = dropDownLifes.querySelector('#drop-down-lifes-life');

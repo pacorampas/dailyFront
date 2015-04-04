@@ -133,5 +133,37 @@
 	position: absolute;
 	width: 50%;
 	height: 0.4rem;
-	background: #FFBD6B;;
+	background: #FFBD6B;
+}
+
+button.reset.button-circle {
+	position: fixed;
+	height: 5.6rem;
+	width: 5.6rem;
+	border-radius: 50%;
+	bottom: 1.6rem;
+	right: 1.6rem;
+	background-image: url(img/practice_icon.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 32px;
+	background-color: #F99900; 
+	z-index: 1;
+	-webkit-transform: translate3d(0,100px,0);
+	transform: translate3d(0,100px,0);
+	-webkit-transition: transform 0.2s;
+	transition: transform 0.2s;
+}
+
+.is-header-review ~ .content button.reset.button-circle {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+button.reset.button-circle:active {
+	background-color: #FFBB61;
+}
+
+button.reset.button-circle[data-disabled="true"] {
+	background-color: #ccc !important;
 }

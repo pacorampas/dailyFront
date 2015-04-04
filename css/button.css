@@ -23,7 +23,8 @@ button.reset {
 }
 
 .button[disabled],
-.button.disabled {
+.button.disabled,
+.button[data-disabled="true"] {
 	background-color: #E6E6E6 !important;
 	color: #ccc !important;
 	border-bottom: solid 0.2rem #ccc !important;
