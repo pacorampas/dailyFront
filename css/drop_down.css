@@ -57,6 +57,10 @@ drop-down footer p {
 	opacity: 1;
 }
 
+.hide-lifes {
+	opacity: 0;
+}
+
 [data-lifes="0"] .icon.heart::before {
 	content: '\E800';
 }

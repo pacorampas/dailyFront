@@ -245,6 +245,13 @@ var ScreenReview = (function(){
 		}
 	}
 
+	function dataLifesRoot(lifes){
+		//add and remove hide-lifes for force to refresh styles in android 4.1 to 4.3
+		rootScreen.classList.add('hide-lifes');
+		rootScreen.dataset.lifes = lifes;
+		rootScreen.classList.remove('hide-lifes');
+	}
+
 	function refreshDropDownLifes(){
 		buttonsGoToPracticeRefreshDisabled();
 
@@ -253,7 +260,8 @@ var ScreenReview = (function(){
 		var alarmsText = dropDownLifes.querySelector('#drop-down-lifes-alarms');
 		var text = dropDownLifes.querySelector('#drop-down-lifes-text');
 		var theLifes = practiceService.getLifes();
-		rootScreen.dataset.lifes = theLifes;
+		
+		dataLifesRoot(theLifes);
 
 		if(practiceService.getErrors() == 0){
 			text.textContent = 'Congratulations you are catched up! You don\'t need practice';
