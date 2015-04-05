@@ -11,11 +11,13 @@ var ScreenReview = (function(){
 	var searchTimeoutId;
 	var buttonsGoToPractice;
 	var listScroll;
+	var reviewTab;
 
 	function open(){
 		selectorListeners();
 		searchListeners();
 		dropDownListeners();
+		errorsReviewTabCount();
 
 		modal = document.getElementById('modal-review');
 		cardServ = new cardService( modal.querySelector('#daily-card-review') );
@@ -363,11 +365,26 @@ var ScreenReview = (function(){
 		}
 	}
 
+	function errorsReviewTabCount(){
+		if(!reviewTab){
+			reviewTab = rootScreen.querySelector('#review-tab');
+		}
+		var errors = practiceService.getErrors().length;
+		
+		if(errors > 99){
+			reviewTab.dataset.tinyErrors = true;
+		} else {
+			reviewTab.dataset.tinyErrors = false;
+		}
+		reviewTab.dataset.errors = errors;
+	}
+
 	document.addEventListener('uploadedLifes', function(){
 		refreshDropDownLifes();
 	})
 
 	document.addEventListener('uploadedActives', function(){
+		errorsReviewTabCount();
 		refreshDropDownLifes();
 		if(event.detail && event.detail.correct) {
 			listReview.querySelector('#review-expression-'+event.detail.idExpression).setAttribute('correct', true);

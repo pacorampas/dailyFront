@@ -30,3 +30,24 @@
 .tabs button.current {
 	font-weight: bold;
 }
+
+.tabs button[data-errors]::after {
+	content: attr(data-errors);
+	display: inline-block;
+	width: 1.8rem;
+	height: 1.8rem;
+	margin-left: 0.8rem;
+	border-radius: 50%;
+	background: #F17059;
+	line-height: 2rem;
+	font-size: 1.1rem;
+	font-weight: normal;
+}
+
+.tabs button[data-errors="0"]::after {
+	display: none;
+}
+
+.tabs button[data-tiny-errors="true"]::after {
+	font-size: 0.9rem;
+}
