@@ -25,6 +25,30 @@ var ScreenReview = (function(){
 			modal.hidden = true;
 			cardServ.flipToFront();
 		})
+		var swipe = new eventSwipeService(
+			modal.querySelector('#flip-container-review'), 
+			function(infoSwipe){
+				infoSwipe.draggable.style.webkitTransitionDuration = '0';
+			}, 
+			function(infoSwipe, addX){
+				if(infoSwipe.posY < -100){
+					modal.hidden = true;
+					cardServ.flipToFront();
+				}
+				infoSwipe.draggable.style.webkitTransform = 'translate3d(0,'+infoSwipe.posY+'px,0)';
+			},
+			function(infoSwipe){
+				var timeOut = 0;
+				if(infoSwipe.posY < -100){
+					timeOut = 200;
+				}
+				setTimeout(function(){
+					infoSwipe.resetValues();
+					infoSwipe.draggable.style.webkitTransitionDuration = '100ms';
+					infoSwipe.draggable.style.webkitTransform = 'translate3d(0,0,0)';
+				}, timeOut)
+			}
+		);   
 
 		listReview = rootScreen.querySelector('#list-review');
 		printListExpression();
@@ -43,7 +67,9 @@ var ScreenReview = (function(){
 					searchByWord('');
 				}, 500);
 			}
-		});        
+		});     
+
+
 	}
 
 	var valPrev = '';
