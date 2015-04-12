@@ -114,7 +114,11 @@ var ScreenReview = (function(){
 			var expression = activesService.getExressionByIdActive(actives[key].idExpression);
 			printLi(expression, actives[key]);
 		}
-		listScroll = new IScroll('#screen-review');
+		if(!listScroll){
+			listScroll = new IScroll('#screen-review');
+		}else{
+			listScroll.refresh();
+		}
 	}
 
 	function printLi(expression, active){
@@ -426,6 +430,7 @@ var ScreenReview = (function(){
 			e.preventDefault();
 			clickLi(this.dataset.id);
 		})
+		listScroll.refresh();
 	});
 
 	document.addEventListener('refreshDaily', function(event){
