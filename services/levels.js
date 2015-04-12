@@ -211,9 +211,11 @@ var activesService = (function(){
 		var activeDaily = getActive(daily.idExpression);
 		
 		for( key in actives ) {
-			if( (actives[key].idExpression == daily.idExpression && activeDaily.errors.length > 0) || !actives[key].correct){
-				var idExpression = actives[key].idExpression;
-				errors.push(idExpression);
+			if(!actives[key].correct){
+				if(actives[key].idExpression != daily.idExpression ||  actives[key].idExpression == daily.idExpression && activeDaily.errors.length > 0){
+					var idExpression = actives[key].idExpression;
+					errors.push(idExpression);
+				}	
 			}
 		}
 		return errors;
