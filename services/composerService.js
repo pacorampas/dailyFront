@@ -41,6 +41,8 @@ composerService.prototype.verifyAnswer = function (answers, userAnswer){
       //quitar signos de puntuación
       if(userAnswer == '' || typeof userAnswer === "undefined") return false;
 
+      userAnswer = userAnswer.toUpperCase();
+
       userAnswer = userAnswer.replace(/\s+/g, " ");
       userAnswer = userAnswer.replace(/\s+\?/g, "?");
       userAnswer = userAnswer.replace(/\s+!/g, "!");
@@ -50,7 +52,7 @@ composerService.prototype.verifyAnswer = function (answers, userAnswer){
       var answerWords = userAnswer.split(" ");
       
       for(index in answers){
-        var tempWords = answers[index].split(" ");
+        var tempWords = answers[index].toUpperCase().split(" ");
         var countMistakes = 0;
         var maxMistakes = tempWords.length;
 
