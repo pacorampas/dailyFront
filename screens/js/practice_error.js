@@ -91,7 +91,7 @@ var ScreenPracticeError = (function(){
 			activesService.updateActive(daily.id, true);
 			ratioPassed.textContent = practiceService.calculatePassed();
 			cardServ.changeBackText('CORRECT');
-			if(practiceService.getErrors().length > 1){
+			if(practiceService.getErrors().length > 0){
 				continueWrapper.classList.add('two-buttons');
 				continueButton.addEventListener('click', refresh);
 				exitButton.addEventListener('click', quit);
@@ -103,6 +103,7 @@ var ScreenPracticeError = (function(){
 			}
 		} else {
 			printCounter();
+			cardServ.wrongAnswer(daily.contexts[0].answers[0], valueCheking);
 			if(practiceService.getLifes() > 0){
 				exitButton.addEventListener('click', quit);
 				continueButton.addEventListener('click', refresh);

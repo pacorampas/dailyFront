@@ -49,7 +49,12 @@ cardService.prototype.flipToFront = function(){
 
 cardService.prototype.changeBackText = function(text){
 	this.valueBack.textContent = text;
-	this.valueBack.style.fontSize = '4rem';
+}
+
+cardService.prototype.wrongAnswer = function(correctAnswer, userAnswer){
+	var wrapperWrong = this.card.querySelector('.wrong-wrapper');
+	wrapperWrong.querySelector('.correct-answer span').textContent = correctAnswer;
+	wrapperWrong.querySelector('.user-answer span').textContent = userAnswer;
 }
 
 cardService.prototype.check = function(check){

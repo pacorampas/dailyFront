@@ -84,6 +84,7 @@ var ScreenPractice = (function(){
 			continueWrapper.querySelector('p').textContent = 'Good job! You are closest to complete all expressions.';
 			activesService.updateActive(daily.id, true);
 		} else {
+			cardServ.wrongAnswer(daily.contexts[0].answers[0], valueCheking);
 			cardServ.changeBackText('WRONG');
 			continueWrapper.querySelector('p').textContent = 'You have failded this time. You can go to review to learn it.';
 			activesService.updateActive(daily.id, false);

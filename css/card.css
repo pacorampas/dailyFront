@@ -74,25 +74,6 @@
 	padding: 5rem 3rem 3rem;
 }
 
-.card [check="true"] {
-	background: #6FCE7E;
-}
-
-.card [check="false"] {
-	background: #EA694E;
-}
-
-
-.card [check] p {
-	padding: 0;
-	margin-top: 0;
-}
-
-.card [check] p span {
-	font-weight: bold;
-	color: #fff;
-}
-
 /* entire container, keeps perspective */
 .flip-container {
 	-webkit-perspective: 1000;

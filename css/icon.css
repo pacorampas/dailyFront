@@ -22,7 +22,7 @@ i + i {
 	content: attr(text);
 }
 
-.icon.menu::before, i.text::before {
+.icon.menu::before, i.menu::before {
 	content: '\f0c9';
 }
 
@@ -40,6 +40,14 @@ i + i {
 
 .icon.gear::before, i.gear::before {
 	content: '\f013';
+}
+
+.icon.check::before, i.check::before {
+	content: '\f00c';
+}
+
+.icon.close::before, i.close::before {
+	content: '\f00d';
 }
 
 .icon.power-off::before, i.power-off::before {
