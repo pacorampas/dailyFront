@@ -5,7 +5,9 @@ localStorage.allLevels = '[{"id":4,"value":"nivel cuarto","expressions":[{"id":1
 
 //real expressions
 localStorage.levels = '[{"id":1,"value":"nivel primero","expressions":[{"id":1,"value":"Beat around the bush","explanation":"Be deliberately ambiguous or unclear in order to mislead or withhold information","contexts":[{"id":1,"value":"She doesn\'t talk about the core issue. She is trying to deflect attention from the main topic","answers":["She is beating around the bush","She\'s beating around the bush"]}]},{"id":2,"value":"Oh my God!","explanation":"An exclamation of shock or surprise, often used repeatedly by people who are shocked and surprised by almost everything and insert it into conversations whenever possible","contexts":[{"id":2,"value":"-Do you know what? -What? -I have seen the Johnson\'s pretty little girl with an old and ugly man.","answers":["Oh my God!"]}]},{"id":3,"value":"The last straw that breaks the camel\'s back","explanation":"The last in a series of unpleasant events which finally makes you feel that you cannot continue to accept a bad situation","contexts":[{"id":3,"value":"Losing my job was bad enough, but having the relationship end like that...","answers":["was the last straw that broke the camel\'s back"]}]}]},{"id":2,"value":"nivel segundo","expressions":[{"id":4,"value":"Leave me alone","explanation":"A rude way of telling people to give you some space and to not bother","contexts":[{"id":4,"value":"I need to think about things, so…","answers":["leave me alone"]}]},{"id":5,"value":"Let the cat out of the bag","explanation":"Reveal a secret or a surprise by accident","contexts":[{"id":5,"value":"I\'m going to tell Rose that I\'m in love with her, but don\'t tell anything please, it\'s a secret. Try not to…","answers":["let the cat out of the bag"]}]},{"id":6,"value":"Let’s have one for the road","explanation":"If you have one for the road, you have a drink, usually an alcoholic drink, before you start a journey or before leaving a bar","contexts":[{"id":6,"value":"-Hey guys, the bar is going to close in 10 minutes, so…","answers":["let’s have one for the roa"]}]}]},{"id":3,"value":"nivel tercero","expressions":[{"id":7,"value":"Make yourself at home","explanation":"Relax and make yourself comfortable in someone else\'s homea","contexts":[{"id":7,"value":"-Hi! I hope I\'m not too early. -Not at all. Come in and...","answers":["make yourself at home"]}]},{"id":8,"value":"No wonder","explanation":"This idiom means that it\'s not surprising","contexts":[{"id":8,"value":"This is the first time the children have been abroad, ... they are excited","answers":["no wonder"]}]},{"id":9,"value":"Pissed as a newt","explanation":"A colloquial expression in the UK for someone who is very drunk","contexts":[{"id":9,"value":"Look at Mike, he has drunk the bottle all alone, he\'s as…","answers":["pissed as a newt"]}]}]}]';
-localStorage.allLevels = '[{"id":4,"value":"nivel cuarto","expressions":[{"id":10,"value":"Pull the other one","explanation":"It\'s use to tell someone that you do not believe what they have just said","contexts":[{"id":10,"value":"-Yeah I drank about 20 beers but the cop couldn\'t tell I was drunk and let me go. -I don\'t think so...","answers":["pull the other one"]}]},{"id":11,"value":"Same here","explanation":"Said when you agree with what has been said or you have experienced the same thing as they have","contexts":[{"id":11,"value":"I\'ll have chocolate ice cream! -Yes,...","answers":["same here"]}]},{"id":12,"value":"Say when","explanation":"Tell me when I have given you enough of something, usually a liquid. (Sometimes answered simply with When.)","contexts":[{"id":12,"value":"-Do you want some more juice? -Yes. -Okay,... -When.","answers":["say when"]}]}]},{"id":5,"value":"nivel quinto","expressions":[{"id":13,"value":"Talk of the devil","explanation":"Talk about a certain person, and that person appears. (Used when someone appears whom you have just been talking about.)","contexts":[{"id":13,"value":"-I haven\'t seen Bob for weeks. -Look, here comes Bob right now. -Well,...","answers":["talk of the devil"]}]},{"id":14,"value":"Ten-Bob","explanation":"UK - Fifty pence (50p). Half a pound Sterling (100 pence). Fifty Pennies.","contexts":[{"id":14,"value":"-Oi Steve, have you got a ... bit for the pool-table?","answers":["Ten-Bob"]}]},{"id":15,"value":"Pay cash","explanation":"Pay money in the form of bills or coins; currency","contexts":[{"id":15,"value":"-How much is it? -25 pounds. Will you ... or with a credit card?","answers":["pay cash"]}]}]},{"id":6,"value":"nivel sexto","expressions":[{"id":16,"value":"You’re kidding","explanation":"Used to express disbelief when someone has said something that you think is ridiculous or completely untrue","contexts":[{"id":16,"value":"-I have to go home. It\'s late. -Now? ...","answers":["You are kidding","You\'re kidding"]}]},{"id":17,"value":"You’re welcome","explanation":"Usually used as an answer to someone saying thank you","contexts":[{"id":17,"value":"-Thanks for returning the video. -Oh, ...","answers":["You are welcome","You\'re welcome"]}]},{"id":18,"value":"You’re pulling my leg","explanation":"Tell someone something that is not true as a way of joking with them (usually in continuous tenses)","contexts":[{"id":18,"value":"-Is he really angry with me or do you think...?","answers":["She is pulling my leg","She\'is pulling my leg"]}]}]}]';
+localStorage.allLevels = '[{"id":2,"value":"nivel segundo","expressions":[{"id":4,"value":"Leave me alone","explanation":"A rude way of telling people to give you some space and to not bother","contexts":[{"id":4,"value":"I need to think about things, so…","answers":["leave me alone"]}]},{"id":5,"value":"Let the cat out of the bag","explanation":"Reveal a secret or a surprise by accident","contexts":[{"id":5,"value":"I\'m going to tell Rose that I\'m in love with her, but don\'t tell anything please, it\'s a secret. Try not to…","answers":["let the cat out of the bag"]}]},{"id":6,"value":"Let’s have one for the road","explanation":"If you have one for the road, you have a drink, usually an alcoholic drink, before you start a journey or before leaving a bar","contexts":[{"id":6,"value":"-Hey guys, the bar is going to close in 10 minutes, so…","answers":["let’s have one for the roa"]}]}]},{"id":3,"value":"nivel tercero","expressions":[{"id":7,"value":"Make yourself at home","explanation":"Relax and make yourself comfortable in someone else\'s homea","contexts":[{"id":7,"value":"-Hi! I hope I\'m not too early. -Not at all. Come in and...","answers":["make yourself at home"]}]},{"id":8,"value":"No wonder","explanation":"This idiom means that it\'s not surprising","contexts":[{"id":8,"value":"This is the first time the children have been abroad, ... they are excited","answers":["no wonder"]}]},{"id":9,"value":"Pissed as a newt","explanation":"A colloquial expression in the UK for someone who is very drunk","contexts":[{"id":9,"value":"Look at Mike, he has drunk the bottle all alone, he\'s as…","answers":["pissed as a newt"]}]}]},{"id":4,"value":"nivel cuarto","expressions":[{"id":10,"value":"Pull the other one","explanation":"It\'s use to tell someone that you do not believe what they have just said","contexts":[{"id":10,"value":"-Yeah I drank about 20 beers but the cop couldn\'t tell I was drunk and let me go. -I don\'t think so...","answers":["pull the other one"]}]},{"id":11,"value":"Same here","explanation":"Said when you agree with what has been said or you have experienced the same thing as they have","contexts":[{"id":11,"value":"I\'ll have chocolate ice cream! -Yes,...","answers":["same here"]}]},{"id":12,"value":"Say when","explanation":"Tell me when I have given you enough of something, usually a liquid. (Sometimes answered simply with When.)","contexts":[{"id":12,"value":"-Do you want some more juice? -Yes. -Okay,... -When.","answers":["say when"]}]}]},{"id":5,"value":"nivel quinto","expressions":[{"id":13,"value":"Talk of the devil","explanation":"Talk about a certain person, and that person appears. (Used when someone appears whom you have just been talking about.)","contexts":[{"id":13,"value":"-I haven\'t seen Bob for weeks. -Look, here comes Bob right now. -Well,...","answers":["talk of the devil"]}]},{"id":14,"value":"Ten-Bob","explanation":"UK - Fifty pence (50p). Half a pound Sterling (100 pence). Fifty Pennies.","contexts":[{"id":14,"value":"-Oi Steve, have you got a ... bit for the pool-table?","answers":["Ten-Bob"]}]},{"id":15,"value":"Pay cash","explanation":"Pay money in the form of bills or coins; currency","contexts":[{"id":15,"value":"-How much is it? -25 pounds. Will you ... or with a credit card?","answers":["pay cash"]}]}]},{"id":6,"value":"nivel sexto","expressions":[{"id":16,"value":"You’re kidding","explanation":"Used to express disbelief when someone has said something that you think is ridiculous or completely untrue","contexts":[{"id":16,"value":"-I have to go home. It\'s late. -Now? ...","answers":["You are kidding","You\'re kidding"]}]},{"id":17,"value":"You’re welcome","explanation":"Usually used as an answer to someone saying thank you","contexts":[{"id":17,"value":"-Thanks for returning the video. -Oh, ...","answers":["You are welcome","You\'re welcome"]}]},{"id":18,"value":"You’re pulling my leg","explanation":"Tell someone something that is not true as a way of joking with them (usually in continuous tenses)","contexts":[{"id":18,"value":"-Is he really angry with me or do you think...?","answers":["She is pulling my leg","She\'is pulling my leg"]}]}]}]';
+
+localStorage.levels = '[{"id":1,"value":"nivel primero","expressions":[{"id":1,"value":"Beat around the bush","explanation":"Be deliberately ambiguous or unclear in order to mislead or withhold information","contexts":[{"id":1,"value":"She doesn\'t talk about the core issue. She is trying to deflect attention from the main topic","answers":["She is beating around the bush","She\'s beating around the bush"]}]},{"id":2,"value":"Oh my God!","explanation":"An exclamation of shock or surprise, often used repeatedly by people who are shocked and surprised by almost everything and insert it into conversations whenever possible","contexts":[{"id":2,"value":"-Do you know what? -What? -I have seen the Johnson\'s pretty little girl with an old and ugly man.","answers":["Oh my God!"]}]},{"id":3,"value":"The last straw that breaks the camel\'s back","explanation":"The last in a series of unpleasant events which finally makes you feel that you cannot continue to accept a bad situation","contexts":[{"id":3,"value":"Losing my job was bad enough, but having the relationship end like that...","answers":["was the last straw that broke the camel\'s back"]}]}]}]';
 }
 
 var levelsService = (function(){
@@ -91,10 +93,20 @@ if(localStorage.dev === undefined){
 localStorage.actives = '{"1":{"idExpression":1,"idLevel":1,"created":"Wed Aug 10 2014 20:18:32 GMT+0200","errors":["2014-08-23T11:13:28.735Z"],"correct":"2014-08-23T13:51:37.285Z"},"2":{"idExpression":2,"idLevel":1,"created":"2014-08-26T18:48:22.110Z","errors":[],"correct":false},"3":{"idExpression":3,"idLevel":1,"created":"2014-08-26T18:54:08.682Z","errors":["2014-08-28T18:42:37.696Z"],"correct":"2014-08-28T18:43:02.281Z"},"4":{"idExpression":4,"idLevel":2,"created":"2014-09-13T08:50:06.115Z","errors":[],"correct":null},"5":{"idExpression":5,"idLevel":2,"created":"2014-09-08T15:21:11.078Z","errors":[],"correct":null},"6":{"idExpression":6,"idLevel":2,"created":"2014-09-11T09:50:10.084Z","errors":[],"correct":null},"7":{"idExpression":7,"idLevel":3,"created":"2014-09-11T09:50:10.084Z","errors":[],"correct":"2014-09-08T15:21:11.078Z"},"8":{"idExpression":8,"idLevel":3,"created":"2014-10-11T09:50:10.084Z","errors":[],"correct":"2014-10-08T15:21:11.078Z"},"9":{"idExpression":9,"idLevel":3,"created":"2015-11-03T09:50:10.084Z","errors":[],"correct":"2014-09-08T15:21:11.078Z"}}';
 localStorage.daily = '{"idLevel":3,"idExpression":9}';
 localStorage.notActives = '{"1":[],"2":[],"3":[],"active":3}';
+
+localStorage.actives = '{}';
+localStorage.actives = '{}';
+//localStorage.actives = '{"1":{"idExpression":1,"idLevel":1,"created":"Wed Aug 10 2014 20:18:32 GMT+0200","errors":["2014-08-23T11:13:28.735Z"],"correct":"2014-08-23T13:51:37.285Z"},"2":{"idExpression":2,"idLevel":1,"created":"2014-08-26T18:48:22.110Z","errors":[],"correct":false},"3":{"idExpression":3,"idLevel":1,"created":"2014-08-26T18:54:08.682Z","errors":["2014-08-28T18:42:37.696Z"],"correct":"2014-08-28T18:43:02.281Z"}}';
+localStorage.daily = '{}';
+localStorage.notActives = '{"1":[3,2,1],"active":1}';
+
 }
+
+
+
 var activesService = (function(){
 	var actives = localStorage.actives ? JSON.parse(localStorage.actives) : {};
-	var notActives = localStorage.notActives ? JSON.parse(localStorage.notActives) : [];
+	var notActives = localStorage.notActives ? JSON.parse(localStorage.notActives) : {};
 	var daily = localStorage.daily ? JSON.parse(localStorage.daily) : {};
 
 	function getActive(idExpression) {
@@ -102,6 +114,10 @@ var activesService = (function(){
 	}
 
 	function getActives(){
+		// if there isn't any active return false
+		if(Object.keys(actives).length == 0){
+			return false;
+		}
 		return actives;
 	}
 
@@ -134,7 +150,7 @@ var activesService = (function(){
 	}
 
 	function createDaily(){
-		if( isTodayDaily() ){
+		if( Object.keys(daily).length > 0 && isTodayDaily() ){
 			//daily
 			return getExressionByIdActive(daily.idExpression);
 		}else{
@@ -156,6 +172,10 @@ var activesService = (function(){
 	}
 
 	function getDailyActive (){
+		if(!daily.idExpression) {
+			console.log('Not existe daily');
+			return false;
+		}
 		return getActive(daily.idExpression);
 	}
 
@@ -240,6 +260,17 @@ var activesService = (function(){
 
 		document.dispatchEvent(refreshDaily);
 	}
+
+	function generateNewNotActiveLevel(levelToAdd){
+		notActives[levelToAdd.id] = [];
+		notActives.active = levelToAdd.id;
+		var expressions = levelToAdd.expressions;
+
+		for(var i = 0; i < expressions.length; i++){
+			notActives[levelToAdd.id].unshift(expressions[i].id);
+		}
+		saveData();
+	}
 	
 	document.addEventListener('addedNewLevel', function(){
 		var lastLevel = levelsService.getLastLevel();
@@ -247,14 +278,9 @@ var activesService = (function(){
 			console.log('This level is already active');
 			return;
 		}
-		notActives[lastLevel.id] = [];
-		notActives.active = lastLevel.id;
-		var expressions = lastLevel.expressions;
+		
+		generateNewNotActiveLevel(lastLevel);
 
-		for(var i = 0; i < expressions.length; i++){
-			notActives[lastLevel.id].unshift(expressions[i].id);
-		}
-		saveData();
 		if( !isTodayDaily() ){
 			dispatchEventRefreshDaily();
 		}
@@ -322,8 +348,12 @@ var practiceService = (function(){
 
 	function calculatePassed(){
 		var actives = activesService.getActives();
+		if(Object.keys(actives).length == 0){
+			return false;
+		}
+		
 		var dailyActive = activesService.getDailyActive();
-		if(dailyActive.errors.length > 0 || dailyActive.correct){
+		if(dailyActive && dailyActive.errors.length > 0 || dailyActive.correct){
 			return Object.keys(actives).length - errors.length;
 		}else{
 			return Object.keys(actives).length - errors.length - 1;

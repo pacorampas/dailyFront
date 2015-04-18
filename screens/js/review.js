@@ -107,6 +107,13 @@ var ScreenReview = (function(){
 	function printListExpression(){
 		var actives = activesService.getActives();
 		var daily = activesService.getDaily();
+
+		//if there isn't any active or the only one active is the daily and don't have errors (isn't practive yet)
+		if(!actives || ( Object.keys(actives).length == 1 && actives[daily.id].errors == 0 ) ){
+		 	listReview.classList.add('not-actives');
+			return;
+		}
+		
 		for(key in actives){
 			if(actives[key].idExpression == daily.id && actives[key].errors.length <= 0){
 				continue;
@@ -191,9 +198,28 @@ var ScreenReview = (function(){
 		document.body.classList.remove('filterFailed');
 		document.body.classList.add('filter'+value);
 		selector.querySelector('span:first-child').textContent = value;
+		listIsEmptyOf(value);
 		setTimeout(function () {
 	        listScroll.refresh();
 	    }, 0);
+	}
+
+	function listIsEmptyOf(value) {
+		listReview.classList.remove('is-empty');
+		if(value.toUpperCase() === 'ALL'){
+			return;
+		}
+		if(value.toUpperCase() === 'PASSED'){
+			var valueAttr = true;
+		} else if(value.toUpperCase() === 'FAILED') {
+			var valueAttr = false;
+		}
+
+		var elements = listReview.querySelector('[correct="'+valueAttr+'"]');
+		if(!elements){
+			listReview.classList.add('is-empty');
+			listReview.setAttribute('message', 'Is empty of '+value.toLowerCase());
+		}
 	}
 
 	function searchListeners(){
@@ -422,6 +448,10 @@ var ScreenReview = (function(){
 	})
 
 	document.addEventListener('practicedDaily', function(event){
+		if(listReview.classList.contains('not-actives')){
+		 	listReview.classList.remove('not-actives');
+		}
+
 		var daily = activesService.getDaily();
 		var dailyActive = activesService.getActive(daily.id);
 		var li = printLi(daily, dailyActive);
@@ -430,7 +460,11 @@ var ScreenReview = (function(){
 			e.preventDefault();
 			clickLi(this.dataset.id);
 		})
-		listScroll.refresh();
+		if(!listScroll){
+			listScroll = new IScroll('#screen-review');
+		}else{
+			listScroll.refresh();
+		}
 	});
 
 	document.addEventListener('refreshDaily', function(event){

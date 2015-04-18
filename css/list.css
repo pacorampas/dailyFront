@@ -50,3 +50,30 @@ ul.list li.filter-hide {
 	pointer-events: none;*/
 	display: none;
 }
+
+ul.list.not-actives,
+ul.list.is-empty {
+	display: table;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+}
+
+.not-actives-text {
+	display: none;
+}
+
+ul.list.not-actives .not-actives-text,
+ul.list.is-empty::before {
+	display: table-cell;
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 3rem;
+	padding: 3rem;
+}
+
+ul.list.is-empty::before {
+	content: attr(message);
+}
