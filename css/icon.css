@@ -63,6 +63,11 @@ i + i {
 	font-family: 'icon-heart'
 }
 
+.icon.heart-stroke::before, i.heart::before {
+	content: '\E800';
+	font-family: 'icon-heart'
+}
+
 .icon.left,
 i.left,
 .header h1.left {

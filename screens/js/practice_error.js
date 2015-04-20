@@ -131,7 +131,12 @@ var ScreenPracticeError = (function(){
 
 	//---Diferencia con practice.js--
 	function printCounter(){
-		counterLifes.dataset.life = practiceService.getLifes();
+		var classAttr = counterLifes.getAttribute('class');
+		var pos = classAttr.search('life-count-');
+		var lifeClassPrev = classAttr.substr(pos, 12);
+		var lifeClassNew = 'life-count-'+practiceService.getLifes();
+		classAttr = classAttr.replace(lifeClassPrev, lifeClassNew );
+		counterLifes.setAttribute('class', classAttr);
 	}
 
 	//---Diferencia con practice.js--
