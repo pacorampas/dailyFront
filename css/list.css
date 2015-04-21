@@ -59,7 +59,8 @@ ul.list.is-empty {
 	background: transparent;
 }
 
-.not-actives-text {
+.not-actives-text,
+ul.list.not-actives.is-empty .not-actives-text {
 	display: none;
 }
 
