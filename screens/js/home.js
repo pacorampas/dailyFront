@@ -175,10 +175,13 @@ var ScreenHome = (function(){
 		}
 	})
 	
-//menubutton
+	function goToPane(value){
+		swipe.goToPage(value, 0, 200);
+	}
 
 	return {
-		open: open
+		open: open,
+		goToPane
 	}
 
 }(Routing));

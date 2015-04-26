@@ -148,9 +148,24 @@ var alarmService = (function(){
 	    if(notification.id == 1){
 			localStorage.practiceActive = 1;
         	dispatchEventPracticeActives();
+        	goTo(0);
 		} else if(notification.id == 2 || notification.id == 3 || notification.id == 4){
 			practiceService.addLife();
+			goTo(1);
 		}
+		
+		function goTo(value){
+			if(typeof(ScreenReview) !== "undefined"){
+				ScreenHome.goToPane(value);
+				return;	
+			}
+			document.addEventListener('screenReviewOpened', goToHomePane);
+			function goToHomePane(){
+				ScreenHome.goToPane(value);
+				document.removeEventListener('screenReviewOpened', goToHomePane);
+			}
+		}
+		
 	}
 
 	return {

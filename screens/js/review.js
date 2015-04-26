@@ -69,7 +69,9 @@ var ScreenReview = (function(){
 			}
 		});     
 
-
+		var screenReviewOpened = document.createEvent('Event');
+		screenReviewOpened.initEvent('screenReviewOpened', true, true);
+		document.dispatchEvent(screenReviewOpened);
 	}
 
 	var valPrev = '';
@@ -505,7 +507,6 @@ var ScreenReview = (function(){
 		isOpenedModal: isOpenedModal,
 		closeModal: closeModal
 	}
-
 }());
 
 Routing.setController(ScreenReview);
