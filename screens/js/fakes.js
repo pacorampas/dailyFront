@@ -114,7 +114,7 @@ var ScreenFake = (function(){
 	        text: 'Our teacher is waiting you for testing your progress',
 	        at: isDate,
 	        badge: 1,
-	        smallIcon: 'res://drawable/icon_small.png',
+	        smallIcon: 'res://drawable/icon_practice.png',
 	        data: 'Practice'
 	    });
 	}
@@ -149,7 +149,7 @@ var ScreenFake = (function(){
 				title: 'New life',
 				text: 'You have a new life for practice errors',
 				at: isDate,
-				smallIcon: 'res://drawable-ldpi/icon_small.png',
+				smallIcon: 'res://drawable-ldpi/icon_heart.png',
 				data: data
 			}
 		);

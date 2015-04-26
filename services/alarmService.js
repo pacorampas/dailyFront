@@ -14,7 +14,7 @@ var alarmService = (function(){
 	        title: 'Put in practice',
 	        text: 'Our teacher is waiting you for testing your progress',
 	        at: isDate,
-	        smallIcon: 'res://drawable/icon_small.png',
+	        smallIcon: 'res://drawable/icon_practice.png',
 	        data: 'Practice'
 	    });
 	}
@@ -32,7 +32,7 @@ var alarmService = (function(){
 				title: 'Your daily is waiting for you',
 				text: 'Our teacher has generate your daily expression',
 				at: isDate,
-				smallIcon: 'res://drawable/icon_small.png',
+				smallIcon: 'res://drawable/icon_white.png',
 				data: 'Daily'
 		});
 	}
@@ -117,7 +117,7 @@ var alarmService = (function(){
 				title: 'New life',
 				text: 'You have a new life for practice errors',
 				at: isDate,
-				smallIcon: 'res://drawable/icon_small.png',
+				smallIcon: 'res://drawable/icon_heart.png',
 				data: data
 			}
 		);
