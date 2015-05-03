@@ -181,7 +181,7 @@ var ScreenHome = (function(){
 
 	return {
 		open: open,
-		goToPane
+		goToPane: goToPane
 	}
 
 }(Routing));
