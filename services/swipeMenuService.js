@@ -9,6 +9,7 @@ var swipeMenuService = (function(idSlideMenu, maxWidth) {
 	var dir = 'ltr';
 
 	menu.addEventListener('touchstart', function(){
+		menu.style.webkitTransitionDuration = '0ms';
 		start = event.touches[0].pageX;
 		menu.style.webkitTransitionDuration = '0';
 		timeStamp = event.timeStamp;
