@@ -33,7 +33,7 @@ var levelsService = (function(){
 		if(!level){
 			return false;
 		}
-		
+
 		for(var i = 0, l = level.expressions.length; i < l; i++){
 			if(level.expressions[i].id == idExpression){
 				return level.expressions[i];
@@ -90,15 +90,15 @@ var levelsService = (function(){
 }());
 
 if(localStorage.dev === undefined){
-localStorage.actives = '{"1":{"idExpression":1,"idLevel":1,"created":"Wed Aug 10 2014 20:18:32 GMT+0200","errors":["2014-08-23T11:13:28.735Z"],"correct":"2014-08-23T13:51:37.285Z"},"2":{"idExpression":2,"idLevel":1,"created":"2014-08-26T18:48:22.110Z","errors":[],"correct":false},"3":{"idExpression":3,"idLevel":1,"created":"2014-08-26T18:54:08.682Z","errors":["2014-08-28T18:42:37.696Z"],"correct":"2014-08-28T18:43:02.281Z"},"4":{"idExpression":4,"idLevel":2,"created":"2014-09-13T08:50:06.115Z","errors":[],"correct":null},"5":{"idExpression":5,"idLevel":2,"created":"2014-09-08T15:21:11.078Z","errors":[],"correct":null},"6":{"idExpression":6,"idLevel":2,"created":"2014-09-11T09:50:10.084Z","errors":[],"correct":null},"7":{"idExpression":7,"idLevel":3,"created":"2014-09-11T09:50:10.084Z","errors":[],"correct":"2014-09-08T15:21:11.078Z"},"8":{"idExpression":8,"idLevel":3,"created":"2014-10-11T09:50:10.084Z","errors":[],"correct":"2014-10-08T15:21:11.078Z"},"9":{"idExpression":9,"idLevel":3,"created":"2015-11-03T09:50:10.084Z","errors":[],"correct":"2014-09-08T15:21:11.078Z"}}';
-localStorage.daily = '{"idLevel":3,"idExpression":9}';
-localStorage.notActives = '{"1":[],"2":[],"3":[],"active":3}';
+//localStorage.actives = '{"1":{"idExpression":1,"idLevel":1,"created":"Wed Aug 10 2014 20:18:32 GMT+0200","errors":["2014-08-23T11:13:28.735Z"],"correct":"2014-08-23T13:51:37.285Z"},"2":{"idExpression":2,"idLevel":1,"created":"2014-08-26T18:48:22.110Z","errors":[],"correct":false},"3":{"idExpression":3,"idLevel":1,"created":"2014-08-26T18:54:08.682Z","errors":["2014-08-28T18:42:37.696Z"],"correct":"2014-08-28T18:43:02.281Z"},"4":{"idExpression":4,"idLevel":2,"created":"2014-09-13T08:50:06.115Z","errors":[],"correct":null},"5":{"idExpression":5,"idLevel":2,"created":"2014-09-08T15:21:11.078Z","errors":[],"correct":null},"6":{"idExpression":6,"idLevel":2,"created":"2014-09-11T09:50:10.084Z","errors":[],"correct":null},"7":{"idExpression":7,"idLevel":3,"created":"2014-09-11T09:50:10.084Z","errors":[],"correct":"2014-09-08T15:21:11.078Z"},"8":{"idExpression":8,"idLevel":3,"created":"2014-10-11T09:50:10.084Z","errors":[],"correct":"2014-10-08T15:21:11.078Z"},"9":{"idExpression":9,"idLevel":3,"created":"2015-11-03T09:50:10.084Z","errors":[],"correct":"2014-09-08T15:21:11.078Z"}}';
+//localStorage.daily = '{"idLevel":3,"idExpression":9}';
+//localStorage.notActives = '{"1":[],"2":[],"3":[],"active":3}';
 
-//localStorage.actives = '{}';
-//localStorage.actives = '{}';
-//localStorage.actives = '{"1":{"idExpression":1,"idLevel":1,"created":"Wed Aug 10 2014 20:18:32 GMT+0200","errors":["2014-08-23T11:13:28.735Z"],"correct":"2014-08-23T13:51:37.285Z"},"2":{"idExpression":2,"idLevel":1,"created":"2014-08-26T18:48:22.110Z","errors":[],"correct":false},"3":{"idExpression":3,"idLevel":1,"created":"2014-08-26T18:54:08.682Z","errors":["2014-08-28T18:42:37.696Z"],"correct":"2014-08-28T18:43:02.281Z"}}';
-//localStorage.daily = '{}';
-//localStorage.notActives = '{"1":[3,2,1],"active":1}';
+
+//it is for the "release" 0 actives, clean
+localStorage.actives = '{}';
+localStorage.daily = '{}';
+localStorage.notActives = '{"1":[3,2,1],"active":1}';
 
 }
 
@@ -129,8 +129,8 @@ var activesService = (function(){
 			actives[idExpression].errors.push(date);
 		}
 		var eventData = {
-			'correct': correct, 
-			'idExpression': idExpression, 
+			'correct': correct,
+			'idExpression': idExpression,
 			'date': date
 		};
 		saveData(eventData);
@@ -182,7 +182,7 @@ var activesService = (function(){
 	function generateDaily(){
 		var idLevelActive = notActives.active;
 		var levelActive = notActives[idLevelActive];
-		
+
 		if(levelActive.length <= 0){
 			console.log('¡¡¡Necesitas descargar un nuevo nivel!!!');
 			levelsService.pullLevel(idLevelActive);
@@ -229,13 +229,13 @@ var activesService = (function(){
 	function errors(){
 		var errors = [];
 		var activeDaily = getActive(daily.idExpression);
-		
+
 		for( key in actives ) {
 			if(!actives[key].correct){
 				if(actives[key].idExpression != daily.idExpression ||  actives[key].idExpression == daily.idExpression && activeDaily.errors.length > 0){
 					var idExpression = actives[key].idExpression;
 					errors.push(idExpression);
-				}	
+				}
 			}
 		}
 		return errors;
@@ -271,14 +271,14 @@ var activesService = (function(){
 		}
 		saveData();
 	}
-	
+
 	document.addEventListener('addedNewLevel', function(){
 		var lastLevel = levelsService.getLastLevel();
 		if(notActives.active == lastLevel.id){
 			console.log('This level is already active');
 			return;
 		}
-		
+
 		generateNewNotActiveLevel(lastLevel);
 
 		if( !isTodayDaily() ){
@@ -306,7 +306,7 @@ localStorage.life = 3;
 var practiceService = (function(){
 	var life = localStorage.life ? localStorage.life : 0;
 	var errors = activesService.errors();
-	
+
 	document.addEventListener('uploadedActives', function(){
 		errors = activesService.errors();
 	});
@@ -329,7 +329,7 @@ var practiceService = (function(){
 		if(life > 3){
 			life = 3;
 		}
-		saveData();		
+		saveData();
 		return life;
 	}
 
@@ -338,7 +338,7 @@ var practiceService = (function(){
 		if(life < 0){
 			life = 0;
 		}
-		saveData();		
+		saveData();
 		return life;
 	}
 
@@ -351,7 +351,7 @@ var practiceService = (function(){
 		if(Object.keys(actives).length == 0){
 			return false;
 		}
-		
+
 		var dailyActive = activesService.getDailyActive();
 		if(dailyActive && dailyActive.errors.length > 0 || dailyActive.correct){
 			return Object.keys(actives).length - errors.length;
@@ -367,7 +367,7 @@ var practiceService = (function(){
 		}
 
 		var rand = Math.floor((Math.random() * errors.length));
-		return activesService.getExressionByIdActive(errors[rand]);	
+		return activesService.getExressionByIdActive(errors[rand]);
 	}
 
 	var uploadedLifes = document.createEvent('Event');

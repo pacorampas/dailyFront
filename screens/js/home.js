@@ -42,7 +42,7 @@ var ScreenHome = (function(){
 		tab.classList.add('current');
 		header.classList.remove('is-header-review');
 		header.classList.remove('is-header-daily');
-		header.classList.add('is-header-'+tab.dataset.tab);		
+		header.classList.add('is-header-'+tab.dataset.tab);
 	}
 
 	function menuListeners(){
@@ -87,7 +87,7 @@ var ScreenHome = (function(){
 		})
 
 		powerOffButton = rootScreen.querySelector('#power-off');
-		
+
 		powerOffButton.addEventListener('click', function(){
 			navigator.notification.confirm(
 	            'Do you really want to exit?',
@@ -95,7 +95,7 @@ var ScreenHome = (function(){
 	            'Exit',
 	            ['Cancel','OK']
 	        );
-			
+
 		})
 		function closeApp(buttonIndex){
 			if (buttonIndex==2){
@@ -103,22 +103,22 @@ var ScreenHome = (function(){
         	}
 		}
 
-		settingsButton = rootScreen.querySelector('#settings-button');
+		/*settingsButton = rootScreen.querySelector('#settings-button');
 		settingsButton.addEventListener('click', function(){
 			Routing.goTo('fakes');
-		})
+		})*/
 	}
 
 	function open(){
 		generateTabs('daily', 'review');
 		header = document.getElementById('header-home');
 		var wrapper = document.getElementById('home-panels-wrapper');
-		
+
 		swipe = new IScroll('#home-panels-wrapper', {
 			scrollX: true,
 			scrollY: false,
 			momentum: false,
-			//click: true
+			click: isAndroidKitKatOrHigher(),
 			snap: true,
 			snapSpeed: 200,
 			keyBindings: true,
@@ -127,23 +127,21 @@ var ScreenHome = (function(){
 				resize: false
 			}
 		})
-		
+
 		//click false dont work on android < 4.4
-		if(device.platform == 'Android' 
-		   && (device.version.substring(0, 1) == 5)
-		   || (device.version.substring(0, 1) == 4 
-		   	  && device.version.substring(2, 3) == 4)
-		){
-			swipe.options.click = true;
+		function isAndroidKitKatOrHigher() {
+			var version = device.version.split('.');
+			return (device.platform == 'Android' &&
+					(version[0] >= 5 || (version[0] == 4 && version[1] >= 4)))
 		}
 
 		var changedStepEvent = document.createEvent('Event');
 		changedStepEvent.initEvent('changedStepEvent', true, true);
 
-		swipe.on('scrollEnd', function () {
+		swipe.on('scrollEnd', function() {
 		    document.dispatchEvent(changedStepEvent);
 		});
-		
+
 		menuListeners();
 	}
 
@@ -153,7 +151,7 @@ var ScreenHome = (function(){
 				menuOverlay.hidden = true;
 				menuOverlay.style.opacity = 0;
 			});
-		} 
+		}
 		else if(ScreenReview.isOpenedDropDown()){
 			ScreenReview.closeDropDown();
 		}
@@ -170,11 +168,10 @@ var ScreenHome = (function(){
 			ScreenPracticeError.quit();
 		}
 		else {
-			console.log('paso');
 			navigator.app.exitApp();
 		}
 	})
-	
+
 	function goToPane(value){
 		swipe.goToPage(value, 0, 200);
 	}
